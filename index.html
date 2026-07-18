@@ -46,6 +46,7 @@
             --font-head: "Outfit", sans-serif;
             --font-body: "Inter", sans-serif;
             --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --section-padding: 7rem 0;
         }
 
         /* ============================================================
@@ -228,6 +229,10 @@
         .nav-cta:hover {
             background: var(--accent-dark) !important;
             transform: translateY(-1px);
+        }
+
+        .nav-mobile-toggle {
+            display: none;
         }
 
         /* ============================================================
@@ -417,6 +422,20 @@
             width: 460px;
             height: 460px;
             margin: 0 auto;
+        }
+
+        .hero-cards-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .hero-cards-container .floating-card {
+            pointer-events: auto;
         }
 
         .hero-circle-frame {
@@ -631,11 +650,8 @@
         /* Responsive Overrides */
         @media (max-width: 1100px) {
             #hero {
-                /* On tablet/mobile stack the image on top; use contain
-                   so the full person is always visible */
-                background:
-                    url('hero-bg.png') center top / contain no-repeat,
-                    #FFFFFF;
+                /* Remove duplicate background image since the portrait circle composition is displayed */
+                background: #FFFFFF;
             }
 
             .hero-grid {
@@ -666,9 +682,7 @@
         @media (max-width: 900px) {
             #hero {
                 padding-top: 7rem;
-                background:
-                    url('hero-bg.png') center top / contain no-repeat,
-                    #FFFFFF;
+                background: #FFFFFF;
             }
 
             .hero-right {
@@ -704,7 +718,16 @@
                 left: 15px;
             }
 
-
+            .hero-cards-container {
+                position: static !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1.25rem !important;
+                width: 100% !important;
+                max-width: 640px !important;
+                margin: 2.5rem auto 0 !important;
+                pointer-events: auto !important;
+            }
 
             .connecting-paths {
                 display: none;
@@ -713,8 +736,8 @@
             .floating-card {
                 position: static !important;
                 width: 100% !important;
-                max-width: 420px !important;
-                margin: 0 auto;
+                max-width: 100% !important;
+                margin: 0 !important;
                 transform: none !important;
                 box-shadow: 0 4px 15px rgba(14, 26, 53, 0.04) !important;
             }
@@ -731,12 +754,19 @@
                 font-size: 2.2rem;
             }
 
-
+            .hero-cards-container {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
 
             .hero-trust-bar {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
                 padding: 1.5rem;
+            }
+
+            .modal-container {
+                padding: 1.75rem 1.25rem !important;
             }
         }
 
@@ -746,7 +776,7 @@
         #about {
             background: var(--off-white);
             color: var(--charcoal);
-            padding: 7rem 0;
+            padding: var(--section-padding);
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid var(--border-light);
@@ -986,7 +1016,7 @@
         #services {
             background: #121824;
             color: #FFFFFF;
-            padding: 7rem 0;
+            padding: var(--section-padding);
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -1195,7 +1225,7 @@
         #tools {
             background: var(--white);
             color: var(--charcoal);
-            padding: 7rem 0;
+            padding: var(--section-padding);
             overflow: hidden;
         }
 
@@ -1314,7 +1344,7 @@
     ============================================================ */
         #pricing {
             background: #F9F9FA;
-            padding: 7rem 0;
+            padding: var(--section-padding);
             color: var(--charcoal);
         }
 
@@ -1728,7 +1758,7 @@
         #proof {
             background: var(--off-white);
             color: var(--charcoal);
-            padding: 7rem 0;
+            padding: var(--section-padding);
         }
 
         .proof-header {
@@ -2559,6 +2589,26 @@
             color: var(--white);
         }
 
+        @media (max-width: 1024px) {
+            :root {
+                --section-padding: 5.5rem 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 4rem 0;
+            }
+            .container {
+                padding: 0 1.25rem;
+            }
+            /* Scale down logo carousel edge fade masks to prevent overlapping logos */
+            .logo-carousel-container::before,
+            .logo-carousel-container::after {
+                width: 50px !important;
+            }
+        }
+
         /* ============================================================
        RESPONSIVE BREAKPOINTS
     ============================================================ */
@@ -2576,8 +2626,127 @@
                 gap: 1.5rem;
             }
 
+            /* Hamburger Button styling on mobile */
+            .nav-mobile-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 24px;
+                height: 18px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 1000;
+            }
+
+            .nav-mobile-toggle span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: currentColor;
+                border-radius: 2px;
+                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, background-color 0.3s ease;
+            }
+
+            /* Hamburger animation to X */
+            nav.nav-menu-open .nav-mobile-toggle span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            nav.nav-menu-open .nav-mobile-toggle span:nth-child(2) {
+                opacity: 0;
+            }
+
+            nav.nav-menu-open .nav-mobile-toggle span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            /* Mobile active navbar style override */
+            nav.nav-menu-open {
+                background: rgba(17, 17, 17, 0.98) !important;
+                color: #FFFFFF !important;
+                backdrop-filter: blur(20px) !important;
+                -webkit-backdrop-filter: blur(20px) !important;
+                box-shadow: none !important;
+            }
+
+            nav.nav-menu-open .nav-logo {
+                color: #FFFFFF !important;
+            }
+
+            /* Mobile menu links drawer */
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 68px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 68px);
+                background: rgba(17, 17, 17, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.2rem;
+                padding: 3rem 2rem 5rem 2rem;
+                box-sizing: border-box;
+                z-index: 99;
+                /* Hidden/slide offscreen by default */
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+                overflow-y: auto;
+                list-style: none;
+            }
+
+            nav.nav-menu-open .nav-links {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: inline-block;
+                font-size: 1.2rem !important;
+                font-weight: 600 !important;
+                color: rgba(255, 255, 255, 0.75) !important;
+                letter-spacing: 0.05em;
+                transition: color 0.25s ease, transform 0.25s ease;
+                width: auto;
+                padding: 0.5rem 1rem;
+            }
+
+            .nav-links a:hover {
+                color: var(--accent) !important;
+                transform: translateY(-2px);
+            }
+
+            .nav-links .nav-cta {
+                background: var(--accent) !important;
+                color: var(--white) !important;
+                padding: 0.85rem 2rem !important;
+                border-radius: 100px !important;
+                font-weight: 700 !important;
+                display: inline-block;
+                width: 100%;
+                max-width: 280px;
+                box-sizing: border-box;
+                margin-top: 0.5rem;
+                box-shadow: 0 4px 15px rgba(255, 92, 58, 0.2);
+            }
+
+            .nav-links .nav-cta:hover {
+                background: var(--accent-dark) !important;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(255, 92, 58, 0.3);
             }
         }
 
@@ -2610,7 +2779,7 @@
         #testimonials {
             background: var(--accent);
             color: #FFFFFF;
-            padding: 7rem 0;
+            padding: var(--section-padding);
             overflow: hidden;
             position: relative;
         }
@@ -2680,7 +2849,8 @@
             flex-shrink: 0;
             width: 540px;
             max-width: 85vw;
-            height: 340px;
+            min-height: 340px;
+            height: auto;
             background: rgba(255, 255, 255, 0.22);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
@@ -3265,6 +3435,12 @@
                 <li><a href="https://calendly.com/iamwilmarabsin/discovery-call?back=1&amp;month=2026-07"
                         target="_blank" rel="noopener" class="nav-cta">Book a Call</a></li>
             </ul>
+
+            <button class="nav-mobile-toggle" aria-label="Toggle navigation" aria-expanded="false" id="nav-toggle-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -3362,97 +3538,99 @@
                         </div>
 
                         <!-- Floating cards (restored) -->
-                        <!-- Feature 1: Omnichannel Customer Support (Top Right) -->
-                        <div class="floating-card fc-top-right">
-                            <div class="fc-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path
-                                        d="M2 10c0-3.9 3.1-7 7-7h6c3.9 0 7 3.1 7 7s-3.1 7-7 7h-2l-4 4v-4H9c-3.9 0-7-3.1-7-7z"
-                                        stroke="#3B82F6" />
-                                    <path d="M8 8a3 3 0 0 1 6 0v2" stroke="var(--accent)" />
-                                    <rect x="7" y="10" width="2" height="3" rx="1" fill="var(--accent)"
-                                        stroke="var(--accent)" />
-                                    <rect x="13" y="10" width="2" height="3" rx="1" fill="var(--accent)"
-                                        stroke="var(--accent)" />
-                                    <path d="M14 13c0 1-.5 1.5-1.5 1.5h-1" stroke="var(--accent)" />
-                                </svg>
+                        <div class="hero-cards-container">
+                            <!-- Feature 1: Omnichannel Customer Support (Top Right) -->
+                            <div class="floating-card fc-top-right">
+                                <div class="fc-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M2 10c0-3.9 3.1-7 7-7h6c3.9 0 7 3.1 7 7s-3.1 7-7 7h-2l-4 4v-4H9c-3.9 0-7-3.1-7-7z"
+                                            stroke="#3B82F6" />
+                                        <path d="M8 8a3 3 0 0 1 6 0v2" stroke="var(--accent)" />
+                                        <rect x="7" y="10" width="2" height="3" rx="1" fill="var(--accent)"
+                                            stroke="var(--accent)" />
+                                        <rect x="13" y="10" width="2" height="3" rx="1" fill="var(--accent)"
+                                            stroke="var(--accent)" />
+                                        <path d="M14 13c0 1-.5 1.5-1.5 1.5h-1" stroke="var(--accent)" />
+                                    </svg>
+                                </div>
+                                <div class="fc-content">
+                                    <h4 class="fc-title">Omnichannel Customer Support</h4>
+                                    <p class="fc-desc">Unified support across live chat, email, Jira, and SMS.</p>
+                                </div>
                             </div>
-                            <div class="fc-content">
-                                <h4 class="fc-title">Omnichannel Customer Support</h4>
-                                <p class="fc-desc">Unified support across live chat, email, Jira, and SMS.</p>
-                            </div>
-                        </div>
 
-                        <!-- Feature 2: Inbox & Calendar Management (Middle Right) -->
-                        <div class="floating-card fc-middle-right">
-                            <div class="fc-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path
-                                        d="M4 7c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V7z"
-                                        stroke="#3B82F6" />
-                                    <path d="M16 3v4M8 3v4M4 9h16" stroke="#3B82F6" />
-                                    <path d="M9 13h6v4H9v-4z" stroke="var(--accent)" />
-                                    <path d="M9 13l3 2 3-2" stroke="var(--accent)" />
-                                    <circle cx="18" cy="6" r="1.5" fill="var(--accent)" stroke="var(--accent)" />
-                                </svg>
+                            <!-- Feature 2: Inbox & Calendar Management (Middle Right) -->
+                            <div class="floating-card fc-middle-right">
+                                <div class="fc-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M4 7c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V7z"
+                                            stroke="#3B82F6" />
+                                        <path d="M16 3v4M8 3v4M4 9h16" stroke="#3B82F6" />
+                                        <path d="M9 13h6v4H9v-4z" stroke="var(--accent)" />
+                                        <path d="M9 13l3 2 3-2" stroke="var(--accent)" />
+                                        <circle cx="18" cy="6" r="1.5" fill="var(--accent)" stroke="var(--accent)" />
+                                    </svg>
+                                </div>
+                                <div class="fc-content">
+                                    <h4 class="fc-title">Inbox &amp; Calendar Management</h4>
+                                    <p class="fc-desc">Mastering calendar bookings and high-volume inbox queues.</p>
+                                </div>
                             </div>
-                            <div class="fc-content">
-                                <h4 class="fc-title">Inbox &amp; Calendar Management</h4>
-                                <p class="fc-desc">Mastering calendar bookings and high-volume inbox queues.</p>
-                            </div>
-                        </div>
 
-                        <!-- Feature 3: Billing, Payments & Operations (Upper Left) -->
-                        <div class="floating-card fc-upper-left">
-                            <div class="fc-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="5" width="20" height="14" rx="3" stroke="#3B82F6" />
-                                    <path d="M2 10h20" stroke="#3B82F6" />
-                                    <rect x="5" y="13" width="4" height="3" rx="1" stroke="var(--accent)" />
-                                    <path d="M14 14.5a2.5 2.5 0 0 0 3.5 0l2.5-2.5" stroke="var(--accent)" />
-                                    <polyline points="17 12 20 12 20 15" stroke="var(--accent)" />
-                                </svg>
+                            <!-- Feature 3: Billing, Payments & Operations (Upper Left) -->
+                            <div class="floating-card fc-upper-left">
+                                <div class="fc-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="5" width="20" height="14" rx="3" stroke="#3B82F6" />
+                                        <path d="M2 10h20" stroke="#3B82F6" />
+                                        <rect x="5" y="13" width="4" height="3" rx="1" stroke="var(--accent)" />
+                                        <path d="M14 14.5a2.5 2.5 0 0 0 3.5 0l2.5-2.5" stroke="var(--accent)" />
+                                        <polyline points="17 12 20 12 20 15" stroke="var(--accent)" />
+                                    </svg>
+                                </div>
+                                <div class="fc-content">
+                                    <h4 class="fc-title">Billing, Payments &amp; Operations</h4>
+                                    <p class="fc-desc">Managing disputes, refunds, card updates, and processor issues.</p>
+                                </div>
                             </div>
-                            <div class="fc-content">
-                                <h4 class="fc-title">Billing, Payments &amp; Operations</h4>
-                                <p class="fc-desc">Managing disputes, refunds, card updates, and processor issues.</p>
-                            </div>
-                        </div>
 
-                        <!-- Feature 4: Account & Subscription Management (Middle Left) -->
-                        <div class="floating-card fc-middle-left">
-                            <div class="fc-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2L3 7v6c0 5.5 4.5 10 9 10s9-4.5 9-10V7l-9-5z" stroke="#3B82F6" />
-                                    <path d="M16 16.5v-1a2.5 2.5 0 0 0-2.5-2.5h-3A2.5 2.5 0 0 0 8 15.5v1"
-                                        stroke="var(--accent)" />
-                                    <circle cx="12" cy="9.5" r="2.5" stroke="var(--accent)" />
-                                </svg>
+                            <!-- Feature 4: Account & Subscription Management (Middle Left) -->
+                            <div class="floating-card fc-middle-left">
+                                <div class="fc-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L3 7v6c0 5.5 4.5 10 9 10s9-4.5 9-10V7l-9-5z" stroke="#3B82F6" />
+                                        <path d="M16 16.5v-1a2.5 2.5 0 0 0-2.5-2.5h-3A2.5 2.5 0 0 0 8 15.5v1"
+                                            stroke="var(--accent)" />
+                                        <circle cx="12" cy="9.5" r="2.5" stroke="var(--accent)" />
+                                    </svg>
+                                </div>
+                                <div class="fc-content">
+                                    <h4 class="fc-title">Account &amp; Subscription Management</h4>
+                                    <p class="fc-desc">Seamless lifecycle management, onboarding, and customer setups.</p>
+                                </div>
                             </div>
-                            <div class="fc-content">
-                                <h4 class="fc-title">Account &amp; Subscription Management</h4>
-                                <p class="fc-desc">Seamless lifecycle management, onboarding, and customer setups.</p>
-                            </div>
-                        </div>
 
-                        <!-- Feature 5: Customer Follow-ups (Bottom Left) -->
-                        <div class="floating-card fc-lower-right">
-                            <div class="fc-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#3B82F6" />
-                                    <path d="M8 12a4 4 0 0 1 7.2-2.4" stroke="var(--accent)" />
-                                    <path d="M16 12a4 4 0 0 1-7.2 2.4" stroke="var(--accent)" />
-                                    <polyline points="13 14 15 12 17 14" stroke="var(--accent)" />
-                                </svg>
-                            </div>
-                            <div class="fc-content">
-                                <h4 class="fc-title">Customer Follow-ups</h4>
-                                <p class="fc-desc">Proactive outreach to ensure high retention and protect revenue.</p>
+                            <!-- Feature 5: Customer Follow-ups (Bottom Left) -->
+                            <div class="floating-card fc-lower-right">
+                                <div class="fc-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#3B82F6" />
+                                        <path d="M8 12a4 4 0 0 1 7.2-2.4" stroke="var(--accent)" />
+                                        <path d="M16 12a4 4 0 0 1-7.2 2.4" stroke="var(--accent)" />
+                                        <polyline points="13 14 15 12 17 14" stroke="var(--accent)" />
+                                    </svg>
+                                </div>
+                                <div class="fc-content">
+                                    <h4 class="fc-title">Customer Follow-ups</h4>
+                                    <p class="fc-desc">Proactive outreach to ensure high retention and protect revenue.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -5181,6 +5359,35 @@
         window.addEventListener("scroll", () => {
             navbar.classList.toggle("scrolled", window.scrollY > 40);
         }, { passive: true });
+
+        // ── Mobile Menu toggle ─────────────────────────────────────
+        const navToggleBtn = document.getElementById("nav-toggle-btn");
+        
+        if (navToggleBtn) {
+            navToggleBtn.addEventListener("click", () => {
+                const isOpen = navbar.classList.toggle("nav-menu-open");
+                navToggleBtn.setAttribute("aria-expanded", isOpen);
+                
+                // Prevent scrolling on body when mobile menu is open
+                if (isOpen) {
+                    document.body.style.overflow = "hidden";
+                } else {
+                    document.body.style.overflow = "";
+                }
+            });
+        }
+
+        // Close mobile menu when links are clicked
+        const mobileLinks = document.querySelectorAll(".nav-links a");
+        mobileLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                navbar.classList.remove("nav-menu-open");
+                if (navToggleBtn) {
+                    navToggleBtn.setAttribute("aria-expanded", "false");
+                }
+                document.body.style.overflow = "";
+            });
+        });
 
 
         // Ã¢â€â‚¬Ã¢â€â‚¬ Scroll-reveal: animate elements into view Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
