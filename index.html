@@ -253,7 +253,7 @@
                and the subject on the right — position it so it fills
                the right half of the section */
             background:
-                url('hero-bg.png') right center / auto 100% no-repeat,
+                url('hero-bg.png') right center / contain no-repeat,
                 #FFFFFF;
             color: var(--hero-navy);
             padding: 9rem 0 5rem;
@@ -1762,11 +1762,7 @@
         }
 
         .proof-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 5rem;
-            align-items: start;
+            margin-bottom: 3.5rem;
         }
 
         .proof-head {
@@ -1776,23 +1772,36 @@
             letter-spacing: -0.03em;
             line-height: 1.15;
             color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .proof-header .pricing-quote {
+            margin-bottom: 1.8rem;
         }
 
         .proof-desc {
             font-size: 1rem;
             color: var(--mid-gray);
             line-height: 1.75;
-            padding-top: 0.5rem;
+            max-width: 640px;
         }
 
         /* ============================================================
-           EXPERIENCE ACCORDION
+           EXPERIENCE ACCORDION + TIMELINE
         ============================================================ */
-        .exp-accordion {
+        .exp-timeline-wrapper {
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
-            max-width: 860px;
+        }
+
+        .exp-row {
+            display: flex;
+        }
+
+        .exp-row .exp-item {
+            flex: 1;
+            min-width: 0;
         }
 
         .exp-item {
@@ -2599,9 +2608,11 @@
             :root {
                 --section-padding: 4rem 0;
             }
+
             .container {
                 padding: 0 1.25rem;
             }
+
             /* Scale down logo carousel edge fade masks to prevent overlapping logos */
             .logo-carousel-container::before,
             .logo-carousel-container::after {
@@ -3595,7 +3606,8 @@
                                 </div>
                                 <div class="fc-content">
                                     <h4 class="fc-title">Billing, Payments &amp; Operations</h4>
-                                    <p class="fc-desc">Managing disputes, refunds, card updates, and processor issues.</p>
+                                    <p class="fc-desc">Managing disputes, refunds, card updates, and processor issues.
+                                    </p>
                                 </div>
                             </div>
 
@@ -3612,7 +3624,8 @@
                                 </div>
                                 <div class="fc-content">
                                     <h4 class="fc-title">Account &amp; Subscription Management</h4>
-                                    <p class="fc-desc">Seamless lifecycle management, onboarding, and customer setups.</p>
+                                    <p class="fc-desc">Seamless lifecycle management, onboarding, and customer setups.
+                                    </p>
                                 </div>
                             </div>
 
@@ -3629,7 +3642,8 @@
                                 </div>
                                 <div class="fc-content">
                                     <h4 class="fc-title">Customer Follow-ups</h4>
-                                    <p class="fc-desc">Proactive outreach to ensure high retention and protect revenue.</p>
+                                    <p class="fc-desc">Proactive outreach to ensure high retention and protect revenue.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -4334,232 +4348,314 @@
     <section id="proof">
         <div class="container">
 
-            <!-- Section header -->
+            <!-- Section header (Services-style: stacked) -->
             <div class="proof-header">
-                <div>
-                    <p class="section-label reveal">Experience</p>
-                    <h2 class="proof-head reveal reveal-delay-1">
-                        My Professional<br>
-                        Journey.
-                    </h2>
+                <p class="section-label reveal">Experience</p>
+                <h2 class="proof-head reveal reveal-delay-1">
+                    My Professional<br>
+                    Journey.
+                </h2>
+                <div class="pricing-quote reveal reveal-delay-2">
+                    <p>Explore the companies I've partnered with throughout my career, where I've helped improve
+                        customer satisfaction, streamline support operations, resolve complex technical issues, and
+                        build lasting customer relationships through exceptional customer success.</p>
                 </div>
-                <p class="proof-desc reveal reveal-delay-2">
-                    Over 8 years of delivering exceptional customer experiences across customer success,
-                    technical support, payment operations, and SaaS&mdash;helping businesses build stronger
-                    relationships and achieve lasting growth.
-                </p>
             </div>
 
-            <!-- ===== ACCORDION ===== -->
-            <div class="exp-accordion reveal reveal-delay-2" id="expAccordion">
+            <!-- ===== TIMELINE + ACCORDION ===== -->
+            <div class="exp-timeline-wrapper reveal reveal-delay-2" id="expAccordion">
 
                 <!-- 01 It's All Savvy Ltd -->
-                <div class="exp-item is-open" data-exp="0">
-                    <button class="exp-header" aria-expanded="true" aria-controls="exp-body-0">
-                        <span class="exp-num">01</span>
-                        <div class="exp-meta">
-                            <div class="exp-company">It's All Savvy Ltd</div>
-                            <div class="exp-role">Customer Success Specialist</div>
-                            <div class="exp-date">Feb 2024 &ndash; Present &middot; 2 yrs 4 mos</div>
-                        </div>
-                        <span class="exp-chevron" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="exp-body" id="exp-body-0" role="region">
-                        <div class="exp-body-inner">
-                            <div class="exp-content">
-                                <p class="exp-overview">It's All Savvy Ltd is a UK-based SaaS company that provides an
-                                    all-in-one CRM and payment solution designed specifically for pet grooming
-                                    businesses. The platform helps groomers streamline scheduling, client communication,
-                                    payments, reporting, and daily operations&mdash;empowering them to run and grow
-                                    their business with ease.</p>
-                                <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                <ul class="exp-list">
-                                    <li>Delivered customer support via email, live chat, phone, and community channels,
-                                        ensuring timely issue resolution and high customer satisfaction.</li>
-                                    <li>Onboarded new customers, conducted product demos, and provided training on CRM
-                                        features and best practices.</li>
-                                    <li>Troubleshot platform, integration, and payment terminal issues while handling
-                                        merchant inquiries, disputes, chargebacks, and settlement investigations.</li>
-                                    <li>Managed and prioritized support tickets in Jira, maintaining accurate
-                                        documentation and updating knowledge base articles.</li>
-                                    <li>Collaborated with product, engineering, and payments teams to enhance customer
-                                        experience and improve support processes.</li>
-                                </ul>
+                <div class="exp-row">
+                    <div class="exp-dot" aria-hidden="true"></div>
+                    <div class="exp-item is-open" data-exp="0">
+                        <button class="exp-header" aria-expanded="true" aria-controls="exp-body-0">
+                            <span class="exp-num">01</span>
+                            <div class="exp-meta">
+                                <div class="exp-company">Customer Success Specialist</div>
+                                <div class="exp-date">It's All Savvy Ltd | Feb 2024 &ndash; Present &middot; 2 yrs 4 mos
+                                </div>
+                            </div>
+                            <span class="exp-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="exp-body" id="exp-body-0" role="region">
+                            <div class="exp-body-inner">
+                                <div class="exp-content">
+                                    <p class="exp-overview">It's All Savvy Ltd is a UK-based SaaS company that provides
+                                        an
+                                        all-in-one CRM and payment solution designed specifically for pet grooming
+                                        businesses. The platform helps groomers streamline scheduling, client
+                                        communication,
+                                        payments, reporting, and daily operations&mdash;empowering them to run and grow
+                                        their business with ease.</p>
+                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                    <ul class="exp-list">
+                                        <li>Delivered customer support via email, live chat, phone, and community
+                                            channels,
+                                            ensuring timely issue resolution and high customer satisfaction.</li>
+                                        <li>Onboarded new customers, conducted product demos, and provided training on
+                                            CRM
+                                            features and best practices.</li>
+                                        <li>Troubleshot platform, integration, and payment terminal issues while
+                                            handling
+                                            merchant inquiries, disputes, chargebacks, and settlement investigations.
+                                        </li>
+                                        <li>Managed and prioritized support tickets in Jira, maintaining accurate
+                                            documentation and updating knowledge base articles.</li>
+                                        <li>Collaborated with product, engineering, and payments teams to enhance
+                                            customer
+                                            experience and improve support processes.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 02 Simple Site LLC -->
-                <div class="exp-item" data-exp="1">
-                    <button class="exp-header" aria-expanded="false" aria-controls="exp-body-1">
-                        <span class="exp-num">02</span>
-                        <div class="exp-meta">
-                            <div class="exp-company">Simple Site LLC</div>
-                            <div class="exp-role">Lead Generation Specialist</div>
-                            <div class="exp-date">Jun 2023 &ndash; Feb 2024 &middot; 8 mos</div>
-                        </div>
-                        <span class="exp-chevron" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="exp-body" id="exp-body-1" role="region">
-                        <div class="exp-body-inner">
-                            <div class="exp-content">
-                                <p class="exp-overview">Simple Site LLC is a US-based digital agency specializing in
-                                    website design, development, and maintenance for small and medium-sized businesses,
-                                    helping clients establish a strong online presence and generate consistent inbound
-                                    leads.</p>
-                                <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                <ul class="exp-list">
-                                    <li>Conducted outbound prospecting and cold calling to generate qualified leads for
-                                        website design, development, and maintenance services.</li>
-                                    <li>Scheduled discovery calls and sales appointments for the business development
-                                        team, maintaining a consistent pipeline of qualified leads.</li>
-                                    <li>Maintained prospect lists using CRM systems, ensuring accurate contact
-                                        information and activity tracking.</li>
-                                    <li>Represented the company's website design, development, and digital marketing
-                                        services with professionalism, building strong first impressions with
-                                        prospective clients.</li>
-                                    <li>Met and exceeded daily and weekly KPIs, including outbound calls,
-                                        qualified leads, appointments booked, and CRM activity targets.</li>
-                                </ul>
+                <div class="exp-row">
+                    <div class="exp-dot" aria-hidden="true"></div>
+                    <div class="exp-item" data-exp="1">
+                        <button class="exp-header" aria-expanded="false" aria-controls="exp-body-1">
+                            <span class="exp-num">02</span>
+                            <div class="exp-meta">
+                                <div class="exp-company">Lead Generation Specialist</div>
+                                <div class="exp-date">Simple Site LLC | Jun 2023 &ndash; Feb 2024 &middot; 8 mos</div>
+                            </div>
+                            <span class="exp-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="exp-body" id="exp-body-1" role="region">
+                            <div class="exp-body-inner">
+                                <div class="exp-content">
+                                    <p class="exp-overview">Simple Site LLC is a US-based digital agency specializing in
+                                        website design, development, and maintenance for small and medium-sized
+                                        businesses,
+                                        helping clients establish a strong online presence and generate consistent
+                                        inbound
+                                        leads.</p>
+                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                    <ul class="exp-list">
+                                        <li>Conducted outbound prospecting and cold calling to generate qualified leads
+                                            for
+                                            website design, development, and maintenance services.</li>
+                                        <li>Scheduled discovery calls and sales appointments for the business
+                                            development
+                                            team, maintaining a consistent pipeline of qualified leads.</li>
+                                        <li>Maintained prospect lists using CRM systems, ensuring accurate contact
+                                            information and activity tracking.</li>
+                                        <li>Represented the company's website design, development, and digital marketing
+                                            services with professionalism, building strong first impressions with
+                                            prospective clients.</li>
+                                        <li>Met and exceeded daily and weekly KPIs, including outbound calls,
+                                            qualified leads, appointments booked, and CRM activity targets.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 03 Global Payments Inc. -->
-                <div class="exp-item" data-exp="2">
-                    <button class="exp-header" aria-expanded="false" aria-controls="exp-body-2">
-                        <span class="exp-num">03</span>
-                        <div class="exp-meta">
-                            <div class="exp-company">Global Payments Inc.</div>
-                            <div class="exp-role">Merchant Support Specialist</div>
-                            <div class="exp-date">Nov 2021 &ndash; Aug 2023 &middot; 2 yr 9 mos</div>
-                        </div>
-                        <span class="exp-chevron" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="exp-body" id="exp-body-2" role="region">
-                        <div class="exp-body-inner">
-                            <div class="exp-content">
-                                <p class="exp-overview">Global Payments Inc. is a leading worldwide provider of payment
-                                    technology and software solutions, serving over 3.5 million merchant locations
-                                    across 170+ countries. The company delivers innovative payment processing,
-                                    point-of-sale systems, and financial technology services to businesses of all sizes.
-                                </p>
-                                <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                <ul class="exp-list">
-                                    <li>Provided technical support for merchants via phone, email, and chat, resolving
-                                        payment terminal and POS-related issues.</li>
-                                    <li>Diagnosed and troubleshot payment processing, connectivity, and hardware
-                                        concerns to minimize business downtime.</li>
-                                    <li>Delivered accurate, customer-focused solutions while consistently meeting SLAs
-                                        and quality standards.</li>
-                                    <li>Documented technical issues and resolutions to contribute to internal knowledge
-                                        base improvement.</li>
-                                    <li>Escalated complex cases to Level 2 support with thorough notes and reproduction
-                                        steps.</li>
-                                </ul>
+                <div class="exp-row">
+                    <div class="exp-dot" aria-hidden="true"></div>
+                    <div class="exp-item" data-exp="2">
+                        <button class="exp-header" aria-expanded="false" aria-controls="exp-body-2">
+                            <span class="exp-num">03</span>
+                            <div class="exp-meta">
+                                <div class="exp-company">Merchant Support Specialist</div>
+                                <div class="exp-date">Global Payments Inc. | Nov 2021 &ndash; Aug 2023 &middot; 2 yr 9
+                                    mos</div>
+                            </div>
+                            <span class="exp-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="exp-body" id="exp-body-2" role="region">
+                            <div class="exp-body-inner">
+                                <div class="exp-content">
+                                    <p class="exp-overview">Global Payments Inc. is a leading worldwide provider of
+                                        payment
+                                        technology and software solutions, serving over 3.5 million merchant locations
+                                        across 170+ countries. The company delivers innovative payment processing,
+                                        point-of-sale systems, and financial technology services to businesses of all
+                                        sizes.
+                                    </p>
+                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                    <ul class="exp-list">
+                                        <li>Provided technical support for merchants via phone, email, and chat,
+                                            resolving
+                                            payment terminal and POS-related issues.</li>
+                                        <li>Diagnosed and troubleshot payment processing, connectivity, and hardware
+                                            concerns to minimize business downtime.</li>
+                                        <li>Delivered accurate, customer-focused solutions while consistently meeting
+                                            SLAs
+                                            and quality standards.</li>
+                                        <li>Documented technical issues and resolutions to contribute to internal
+                                            knowledge
+                                            base improvement.</li>
+                                        <li>Escalated complex cases to Level 2 support with thorough notes and
+                                            reproduction
+                                            steps.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 04 Central Payment Inc. -->
-                <div class="exp-item" data-exp="3">
-                    <button class="exp-header" aria-expanded="false" aria-controls="exp-body-3">
-                        <span class="exp-num">04</span>
-                        <div class="exp-meta">
-                            <div class="exp-company">Central Payment Inc.</div>
-                            <div class="exp-role">Merchant Services Support Specialist</div>
-                            <div class="exp-date">Oct 2019 &ndash; Nov 2021 &middot; 2 yrs 1 mos</div>
-                        </div>
-                        <span class="exp-chevron" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="exp-body" id="exp-body-3" role="region">
-                        <div class="exp-body-inner">
-                            <div class="exp-content">
-                                <p class="exp-overview">Central Payment Inc. (a TSYS Company) is a US-based merchant
-                                    services provider offering credit and debit card processing, point-of-sale hardware,
-                                    payment gateways, and business funding solutions. They serve thousands of merchants
-                                    across industries including retail, restaurants, and professional services.</p>
-                                <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                <ul class="exp-list">
-                                    <li>Assisted customers through phone, email, chat, and ticketing systems, delivering
-                                        prompt and professional support.</li>
-                                    <li>Processed payment-related requests, account updates, card activations, and
-                                        billing inquiries with accuracy.</li>
-                                    <li>Maintained detailed customer records and ensured compliance with company
-                                        procedures and service standards.</li>
-                                    <li>Handled merchant escalations related to chargebacks, disputes, and payment
-                                        discrepancies.</li>
-                                    <li>Contributed to team performance goals by consistently achieving high CSAT and
-                                        quality scores.</li>
-                                </ul>
+                <div class="exp-row">
+                    <div class="exp-dot" aria-hidden="true"></div>
+                    <div class="exp-item" data-exp="3">
+                        <button class="exp-header" aria-expanded="false" aria-controls="exp-body-3">
+                            <span class="exp-num">04</span>
+                            <div class="exp-meta">
+                                <div class="exp-company">Merchant Services Support Specialist</div>
+                                <div class="exp-date">Central Payment Inc. | Oct 2019 &ndash; Nov 2021 &middot; 2 yrs 1
+                                    mos</div>
+                            </div>
+                            <span class="exp-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="exp-body" id="exp-body-3" role="region">
+                            <div class="exp-body-inner">
+                                <div class="exp-content">
+                                    <p class="exp-overview">Central Payment Inc. (a TSYS Company) is a US-based merchant
+                                        services provider offering credit and debit card processing, point-of-sale
+                                        hardware,
+                                        payment gateways, and business funding solutions. They serve thousands of
+                                        merchants
+                                        across industries including retail, restaurants, and professional services.</p>
+                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                    <ul class="exp-list">
+                                        <li>Assisted customers through phone, email, chat, and ticketing systems,
+                                            delivering
+                                            prompt and professional support.</li>
+                                        <li>Processed payment-related requests, account updates, card activations, and
+                                            billing inquiries with accuracy.</li>
+                                        <li>Maintained detailed customer records and ensured compliance with company
+                                            procedures and service standards.</li>
+                                        <li>Handled merchant escalations related to chargebacks, disputes, and payment
+                                            discrepancies.</li>
+                                        <li>Contributed to team performance goals by consistently achieving high CSAT
+                                            and
+                                            quality scores.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 05 CPay Philippines Inc. -->
-                <div class="exp-item" data-exp="4">
-                    <button class="exp-header" aria-expanded="false" aria-controls="exp-body-4">
-                        <span class="exp-num">05</span>
-                        <div class="exp-meta">
-                            <div class="exp-company">DoorDash Inc.</div>
-                            <div class="exp-role">Customer Service Representative</div>
-                            <div class="exp-date">Feb 2018 &ndash; Oct 2019 &middot; 1 yrs 8 mos</div>
-                        </div>
-                        <span class="exp-chevron" aria-hidden="true">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="exp-body" id="exp-body-4" role="region">
-                        <div class="exp-body-inner">
-                            <div class="exp-content">
-                                <p class="exp-overview">DoorDash, Inc. is a leading on-demand delivery platform
-                                    connecting customers with local restaurants, grocery stores, convenience stores, and
-                                    retail businesses through its mobile marketplace, enabling fast, reliable delivery
-                                    while supporting merchants and independent delivery partners.</p>
-                                <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                <ul class="exp-list">
-                                    <li>Assisted customers, merchants, and Dashers with order, payment, delivery, and
-                                        account-related inquiries via phone, chat, and email.</li>
-                                    <li>Investigated missing, delayed, or incorrect orders and coordinated with
-                                        merchants and delivery partners to provide timely resolutions.</li>
-                                    <li>Processed refunds, credits, cancellations, and account adjustments in accordance
-                                        with company policies.</li>
-                                    <li>Troubleshot app, payment, and account access issues, guiding customers through
-                                        effective solutions.</li>
-                                    <li>Demonstrated empathy and professionalism when handling escalated customer
-                                        concerns, helping retain customer trust and loyalty.</li>
-                                </ul>
+                <!-- 05 DoorDash Inc. -->
+                <div class="exp-row">
+                    <div class="exp-dot" aria-hidden="true"></div>
+                    <div class="exp-item" data-exp="4">
+                        <button class="exp-header" aria-expanded="false" aria-controls="exp-body-4">
+                            <span class="exp-num">05</span>
+                            <div class="exp-meta">
+                                <div class="exp-company">Customer Service Representative</div>
+                                <div class="exp-date">DoorDash Inc. | Feb 2018 &ndash; Oct 2019 &middot; 1 yrs 8 mos
+                                </div>
+                            </div>
+                            <span class="exp-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="exp-body" id="exp-body-4" role="region">
+                            <div class="exp-body-inner">
+                                <div class="exp-content">
+                                    <p class="exp-overview">DoorDash, Inc. is a leading on-demand delivery platform
+                                        connecting customers with local restaurants, grocery stores, convenience stores,
+                                        and
+                                        retail businesses through its mobile marketplace, enabling fast, reliable
+                                        delivery
+                                        while supporting merchants and independent delivery partners.</p>
+                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                    <ul class="exp-list">
+                                        <li>Assisted customers, merchants, and Dashers with order, payment, delivery,
+                                            and
+                                            account-related inquiries via phone, chat, and email.</li>
+                                        <li>Investigated missing, delayed, or incorrect orders and coordinated with
+                                            merchants and delivery partners to provide timely resolutions.</li>
+                                        <li>Processed refunds, credits, cancellations, and account adjustments in
+                                            accordance
+                                            with company policies.</li>
+                                        <li>Troubleshot app, payment, and account access issues, guiding customers
+                                            through
+                                            effective solutions.</li>
+                                        <li>Demonstrated empathy and professionalism when handling escalated customer
+                                            concerns, helping retain customer trust and loyalty.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div><!-- /.exp-accordion -->
+                <!-- 06 Amaia Land Corp. -->
+                <div class="exp-row">
+                    <div class="exp-item" data-exp="5">
+                        <button class="exp-header" aria-expanded="false" aria-controls="exp-body-5">
+                            <span class="exp-num">06</span>
+                            <div class="exp-meta">
+                                <div class="exp-company">Property Specialist</div>
+                                <div class="exp-date">Amaia Land Corp. | Jun 2016 &ndash; Feb 2018 &middot; 1 yr 8 mos</div>
+                            </div>
+                            <span class="exp-chevron" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="exp-body" id="exp-body-5" role="region">
+                            <div class="exp-body-inner">
+                                <div class="exp-content">
+                                    <p class="exp-overview">Amaia Land Corp. is a subsidiary of Ayala Land Inc., one of
+                                        the Philippines' leading property developers. Amaia focuses on delivering
+                                        affordable residential developments&mdash;townhouses, condominiums, and
+                                        house-and-lot properties&mdash;to middle-income Filipino families nationwide.</p>
+                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                    <ul class="exp-list">
+                                        <li>Generated qualified leads through digital marketing, cold calling, and
+                                            property events.</li>
+                                        <li>Presented residential properties and conducted site viewings for prospective
+                                            buyers.</li>
+                                        <li>Managed reservations, documentation, credit requirements, and sales
+                                            transactions.</li>
+                                        <li>Guided clients throughout the purchasing process from inquiry to property
+                                            turnover.</li>
+                                        <li>Achieved monthly sales targets through consultative selling and relationship
+                                            management.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.exp-timeline-wrapper -->
 
         </div><!-- /.container -->
     </section><!-- /#proof -->
+
+
+
 
     <script>
         /* ---- Experience Accordion ---- */
@@ -5362,12 +5458,12 @@
 
         // ── Mobile Menu toggle ─────────────────────────────────────
         const navToggleBtn = document.getElementById("nav-toggle-btn");
-        
+
         if (navToggleBtn) {
             navToggleBtn.addEventListener("click", () => {
                 const isOpen = navbar.classList.toggle("nav-menu-open");
                 navToggleBtn.setAttribute("aria-expanded", isOpen);
-                
+
                 // Prevent scrolling on body when mobile menu is open
                 if (isOpen) {
                     document.body.style.overflow = "hidden";
