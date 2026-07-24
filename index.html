@@ -100,6 +100,17 @@
             margin-bottom: 1rem;
         }
 
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1.5px;
+            background: currentColor;
+            margin-right: 0.6rem;
+            vertical-align: middle;
+            margin-bottom: 0.12rem;
+        }
+
         .accent {
             color: var(--accent);
         }
@@ -301,6 +312,17 @@
             margin-bottom: 1.2rem;
         }
 
+        .hero-eyebrow-rust::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1.5px;
+            background: currentColor;
+            margin-right: 0.6rem;
+            vertical-align: middle;
+            margin-bottom: 0.12rem;
+        }
+
         .hero-heading-navy {
             font-family: var(--font-head);
             font-size: clamp(2.4rem, 4.5vw, 4rem);
@@ -329,25 +351,27 @@
         .btn-rust {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.65rem;
             background: var(--accent);
             color: #FFFFFF;
             font-family: var(--font-body);
             font-size: 0.95rem;
             font-weight: 700;
-            padding: 0.95rem 2rem;
-            border-radius: 100px;
-            border: none;
+            padding: 0.9rem 1.75rem;
+            border-radius: 10px;
+            border: 2px solid var(--accent);
             cursor: pointer;
-            transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-            box-shadow: 0 6px 20px rgba(255, 92, 58, 0.2);
+            transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            box-shadow: 0 4px 16px rgba(255, 92, 58, 0.22);
             text-decoration: none;
+            letter-spacing: 0.01em;
         }
 
         .btn-rust:hover {
             background: var(--accent-dark);
+            border-color: var(--accent-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 92, 58, 0.3);
+            box-shadow: 0 8px 24px rgba(255, 92, 58, 0.3);
         }
 
         .btn-rust svg {
@@ -355,31 +379,32 @@
             height: 18px;
             fill: none;
             stroke: currentColor;
-            stroke-width: 2;
+            stroke-width: 2.2;
         }
 
+        /* Hero secondary (now a proper bordered button) */
         .btn-secondary-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--hero-grey, #5A6578);
+            gap: 0.65rem;
+            background: transparent;
+            color: var(--charcoal);
             font-family: var(--font-body);
             font-size: 0.95rem;
-            font-weight: 600;
-            transition: color 0.25s ease;
+            font-weight: 700;
+            padding: 0.9rem 1.75rem;
+            border-radius: 10px;
+            border: 2px solid var(--charcoal);
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
             text-decoration: none;
+            letter-spacing: 0.01em;
+            cursor: pointer;
         }
 
         .btn-secondary-link:hover {
-            color: var(--hero-accent, var(--accent));
-        }
-
-        .btn-secondary-link.about-cta {
-            color: var(--light-gray);
-        }
-
-        .btn-secondary-link.about-cta:hover {
-            color: var(--accent);
+            background: var(--charcoal);
+            color: #FFFFFF;
+            transform: translateY(-2px);
         }
 
         .btn-secondary-link .arrow-icon {
@@ -393,6 +418,96 @@
 
         .btn-secondary-link:hover .arrow-icon {
             transform: translateX(4px);
+        }
+
+        /* Button System (Global) */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            background: var(--accent);
+            color: #FFFFFF !important;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 0.9rem 1.75rem;
+            border-radius: 10px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 16px rgba(255, 92, 58, 0.22);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 92, 58, 0.3);
+            background: var(--accent-dark);
+            border-color: var(--accent-dark);
+            color: #FFFFFF !important;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            background: transparent;
+            color: var(--charcoal) !important;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 0.9rem 1.75rem;
+            border-radius: 10px;
+            border: 2px solid var(--charcoal);
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: #FFFFFF !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary .arrow-icon,
+        .btn-secondary .arrow-icon {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            transition: transform 0.25s ease;
+        }
+
+        .btn-primary:hover .arrow-icon,
+        .btn-secondary:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+
+        /* About section CTA row */
+        .about-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.8rem;
+        }
+
+        @media (max-width: 480px) {
+            .about-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .about-actions .btn-primary,
+            .about-actions .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         .hero-actions {
@@ -860,6 +975,17 @@
             opacity: 1;
         }
 
+        .about-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1.5px;
+            background: currentColor;
+            margin-right: 0.6rem;
+            vertical-align: middle;
+            margin-bottom: 0.12rem;
+        }
+
         .about-headline {
             font-family: var(--font-head);
             font-size: clamp(2.2rem, 3.8vw, 3rem);
@@ -1162,45 +1288,57 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 0.65rem;
             background: var(--accent);
             color: #FFFFFF;
             font-family: var(--font-body);
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            padding: 0.85rem 2rem;
-            border-radius: 100px;
-            box-shadow: 0 10px 25px -5px rgba(255, 92, 58, 0.25);
-            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            padding: 0.9rem 1.75rem;
+            border-radius: 10px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 16px rgba(255, 92, 58, 0.22);
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
             text-decoration: none;
-            border: 1px solid transparent;
+            letter-spacing: 0.01em;
         }
 
         .services-btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px -5px rgba(255, 92, 58, 0.35);
+            box-shadow: 0 8px 24px rgba(255, 92, 58, 0.3);
             background: var(--accent-dark);
+            border-color: var(--accent-dark);
         }
 
         .services-btn-secondary {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            color: #CCCCCC;
+            gap: 0.65rem;
+            background: transparent;
+            color: rgba(255,255,255,0.75);
             font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 0.9rem 1.75rem;
+            border-radius: 10px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
             text-decoration: none;
+            letter-spacing: 0.01em;
+            cursor: pointer;
         }
 
         .services-btn-secondary:hover {
-            color: var(--accent);
+            background: rgba(255,255,255,0.1);
+            color: #FFFFFF;
+            border-color: rgba(255,255,255,0.6);
+            transform: translateY(-2px);
         }
 
         .services-btn-secondary .arrow-icon {
             width: 16px;
             height: 16px;
-            transition: transform 0.3s ease;
+            transition: transform 0.25s ease;
         }
 
         .services-btn-secondary:hover .arrow-icon {
@@ -1582,46 +1720,49 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.65rem;
             width: 100%;
-            padding: 0.95rem;
-            border-radius: 8px;
+            padding: 0.9rem 1.5rem;
+            border-radius: 10px;
             font-family: var(--font-body);
             font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
             text-decoration: none;
+            letter-spacing: 0.01em;
         }
 
         .pricing-cta-btn.outline {
             background: transparent;
-            border: 1.5px solid var(--accent);
-            color: var(--accent);
+            border: 2px solid var(--charcoal);
+            color: var(--charcoal);
         }
 
         .pricing-cta-btn.outline:hover {
-            background: rgba(255, 92, 58, 0.04);
-            transform: translateY(-1px);
+            background: var(--charcoal);
+            color: #FFFFFF;
+            transform: translateY(-2px);
         }
 
         .pricing-cta-btn.solid {
             background: var(--accent);
-            border: 1.5px solid var(--accent);
+            border: 2px solid var(--accent);
             color: var(--white);
+            box-shadow: 0 4px 16px rgba(255, 92, 58, 0.22);
         }
 
         .pricing-cta-btn.solid:hover {
             background: var(--accent-dark);
             border-color: var(--accent-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 92, 58, 0.25);
+            box-shadow: 0 8px 24px rgba(255, 92, 58, 0.3);
         }
 
         .pricing-cta-btn svg {
             width: 16px;
             height: 16px;
-            stroke-width: 2.5;
+            stroke-width: 2.2;
         }
 
         .pricing-card-nested {
@@ -1697,6 +1838,97 @@
             line-height: 1.7;
             color: var(--charcoal);
             opacity: 0.85;
+        }
+
+        /* Pricing Trust Bar (White Card Style matching Pricing Cards) */
+        .pricing-trust-bar {
+            background: var(--white);
+            border: 1px solid rgba(26, 26, 26, 0.08);
+            border-radius: 16px;
+            padding: 1.75rem 2rem;
+            margin-top: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .pricing-trust-bar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(26, 26, 26, 0.06);
+        }
+
+        .pricing-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .pricing-trust-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 92, 58, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(255, 92, 58, 0.15);
+        }
+
+        .pricing-trust-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent);
+        }
+
+        .pricing-trust-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            text-align: left;
+        }
+
+        .pricing-trust-heading {
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.25;
+        }
+
+        .pricing-trust-desc {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--mid-gray);
+            line-height: 1.35;
+        }
+
+        .pricing-trust-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(26, 26, 26, 0.08);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 991px) {
+            .pricing-trust-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .pricing-trust-divider {
+                width: 100%;
+                height: 1px;
+            }
         }
 
         /* Responsive Overrides */
@@ -1925,27 +2157,32 @@
         }
 
         .exp-content {
-            padding: 0 1.8rem 1.6rem 1.8rem;
-            border-top: 1px solid rgba(14, 26, 53, 0.07);
-            padding-top: 1.4rem;
+            padding: 1.5rem 1.8rem 1.8rem 1.8rem;
+            border-top: 1px solid #E5E7EB;
         }
 
         .exp-overview {
             font-family: var(--font-body);
-            font-size: 0.92rem;
-            line-height: 1.75;
-            color: #3d3d3d;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #374151;
             margin-bottom: 1.4rem;
+        }
+
+        .exp-responsibilities-box {
+            background: #F4F5F8;
+            border-radius: 12px;
+            padding: 1.4rem 1.6rem;
         }
 
         .exp-responsibilities-label {
             font-family: var(--font-body);
-            font-size: 0.68rem;
+            font-size: 0.72rem;
             font-weight: 800;
-            letter-spacing: 0.14em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: #0E1A35;
-            margin-bottom: 0.85rem;
+            margin-bottom: 1rem;
         }
 
         .exp-list {
@@ -1954,17 +2191,17 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 0.75rem;
         }
 
         .exp-list li {
             display: flex;
             align-items: flex-start;
-            gap: 0.65rem;
+            gap: 0.75rem;
             font-family: var(--font-body);
-            font-size: 0.88rem;
-            line-height: 1.65;
-            color: #4a4a4a;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #3D4452;
         }
 
         .exp-list li::before {
@@ -2339,22 +2576,24 @@
         .form-submit-btn {
             background: var(--accent);
             color: var(--white);
-            border: none;
-            border-radius: 12px;
-            padding: 1rem;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            padding: 0.9rem 1.75rem;
             font-family: var(--font-body);
             font-weight: 700;
             font-size: 0.95rem;
+            letter-spacing: 0.01em;
             width: 100%;
             cursor: pointer;
-            transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
-            box-shadow: 0 4px 15px rgba(255, 92, 58, 0.15);
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 4px 16px rgba(255, 92, 58, 0.22);
         }
 
         .form-submit-btn:hover {
             background: var(--accent-dark);
+            border-color: var(--accent-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 92, 58, 0.3);
+            box-shadow: 0 8px 24px rgba(255, 92, 58, 0.3);
         }
 
         .contact-strip {
@@ -3082,9 +3321,11 @@
         }
 
         .hero-client-trust-bar {
-            margin-top: 2rem;
+            margin-top: 3.5rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             background: transparent;
             border: none;
             box-shadow: none;
@@ -3094,38 +3335,31 @@
             z-index: 10;
         }
 
-        .trust-bar-label {
-            display: flex;
-            flex-direction: column;
+        .trust-bar-heading {
             font-family: var(--font-body);
-            font-size: 0.68rem;
+            font-size: 0.8rem;
             font-weight: 800;
-            letter-spacing: 0.12em;
-            color: var(--hero-navy);
-            line-height: 1.4;
-            flex-shrink: 0;
-        }
-
-        .trust-bar-divider {
-            width: 1px;
-            height: 36px;
-            background: rgba(14, 26, 53, 0.12);
-            margin: 0 2.5rem;
-            flex-shrink: 0;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #1A1A1A;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            width: 100%;
         }
 
         .trust-bar-logos {
             display: flex;
             align-items: center;
-            flex-grow: 1;
+            width: 100%;
             overflow: hidden;
             position: relative;
-            mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
         }
 
         .trust-bar-logos-track {
             display: flex;
+            align-items: center;
             width: max-content;
             animation: logo-scroll 35s linear infinite;
         }
@@ -3137,8 +3371,8 @@
         .trust-bar-logos-slide {
             display: flex;
             align-items: center;
-            gap: 75px;
-            padding-right: 75px;
+            gap: 65px;
+            padding-right: 65px;
         }
 
         .trust-logo-img {
@@ -3147,20 +3381,13 @@
             width: auto;
             object-fit: contain;
             filter: grayscale(1) brightness(0.2) opacity(0.5);
+            transition: filter 0.25s ease, opacity 0.25s ease;
             flex-shrink: 0;
             display: block;
         }
 
-        .trust-logo-text {
-            font-family: var(--font-head);
-            font-size: 1.15rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: var(--hero-grey);
-            opacity: 0.6;
-            user-select: none;
-            white-space: nowrap;
-            flex-shrink: 0;
+        .trust-logo-img:hover {
+            filter: grayscale(0) brightness(1) opacity(1);
         }
 
         /* Responsive styling */
@@ -3172,27 +3399,8 @@
             }
 
             .hero-client-trust-bar {
-                flex-direction: column;
-                background: transparent;
-                border: none;
-                box-shadow: none;
-                padding: 1.5rem 0;
-                margin-top: 1.5rem;
-                gap: 1.5rem;
-                align-items: center;
-                text-align: center;
-            }
-
-            .trust-bar-divider {
-                width: 100%;
-                height: 1px;
-                margin: 0.5rem 0;
-            }
-
-            .trust-bar-logos {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 2rem;
+                margin-top: 2.5rem;
+                padding: 1rem 0;
             }
         }
 
@@ -3501,38 +3709,6 @@
                             </svg>
                         </a>
                     </div>
-
-                    <!-- Trust Indicators Beneath CTA Buttons -->
-                    <div class="hero-trust-indicators reveal reveal-delay-1">
-                        <div class="trust-indicator">
-                            <div class="trust-indicator-divider"></div>
-                            <div class="trust-indicator-text">
-                                <span class="trust-indicator-heading">8+ Years Experience</span>
-                                <span class="trust-indicator-desc">Customer Experience Partner</span>
-                            </div>
-                        </div>
-                        <div class="trust-indicator">
-                            <div class="trust-indicator-divider"></div>
-                            <div class="trust-indicator-text">
-                                <span class="trust-indicator-heading">No Long-Term Contracts</span>
-                                <span class="trust-indicator-desc">Flexible month-to-month plans</span>
-                            </div>
-                        </div>
-                        <div class="trust-indicator">
-                            <div class="trust-indicator-divider"></div>
-                            <div class="trust-indicator-text">
-                                <span class="trust-indicator-heading">Global Remote Support</span>
-                                <span class="trust-indicator-desc">Available across EST, PST & GMT</span>
-                            </div>
-                        </div>
-                        <div class="trust-indicator">
-                            <div class="trust-indicator-divider"></div>
-                            <div class="trust-indicator-text">
-                                <span class="trust-indicator-heading">Up to 70% Cost Savings</span>
-                                <span class="trust-indicator-desc">Compared to traditional in-house hiring</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Right Column (Desktop visual composition, mobile stack representation) -->
@@ -3649,128 +3825,60 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- Floating Rounded Trust Bar -->
-            <div class="hero-client-trust-bar reveal reveal-delay-3">
-                <div class="trust-bar-label">
-                    <span>TRUSTED BY</span>
-                    <span>GROWING COMPANIES</span>
-                    <span>WORLDWIDE</span>
-                </div>
-                <div class="trust-bar-divider"></div>
+            <!-- Minimalist Trusted By Section -->
+            <div class="hero-client-trust-bar">
+                <p class="trust-bar-heading">TRUSTED BY GROWING COMPANIES WORLDWIDE</p>
                 <div class="trust-bar-logos">
                     <div class="trust-bar-logos-track">
                         <!-- Slide 1 -->
                         <div class="trust-bar-logos-slide">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/intercom.svg"
+                                alt="Intercom" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/zendesk.svg"
+                                alt="Zendesk" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/slack.svg"
+                                alt="Slack" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/google-workspace.svg"
+                                alt="Google Workspace" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/notion.svg"
+                                alt="Notion" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/asana.svg"
+                                alt="Asana" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/zoom.svg"
+                                alt="Zoom" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/hubspot.svg"
+                                alt="HubSpot" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/stripe.svg"
+                                alt="Stripe" class="trust-logo-img">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Global_Payments_Inc._logo.svg"
                                 alt="Global Payments" class="trust-logo-img">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 40" class="trust-logo-img">
-                                <text x="5" y="27" fill="#1b7339" font-family="'Outfit', 'Inter', sans-serif"
-                                    font-weight="500" font-size="22" letter-spacing="-0.5">Central</text>
-                                <text x="76" y="27" fill="#2d2926" font-family="'Outfit', 'Inter', sans-serif"
-                                    font-weight="700" font-size="22" letter-spacing="-0.5">Payment</text>
-                                <text x="7" y="36" fill="#6b6b6b" font-family="'Inter', sans-serif" font-size="5.5"
-                                    font-weight="600" letter-spacing="0.2">A TSYS COMPANY</text>
-                                <path
-                                    d="M 125,32 C 145,38 165,38 175,28 C 179,24 181,20 180,16 C 179,12 174,10 174,10 C 174,10 180,12 181,17 C 182,22 178,27 172,31 C 160,40 140,40 125,32 Z"
-                                    fill="#1b7339" />
-                                <circle cx="171" cy="22" r="3" fill="none" stroke="#2d2926" stroke-width="0.6" />
-                                <text x="169.5" y="23.5" fill="#2d2926" font-family="sans-serif" font-size="4.2"
-                                    font-weight="bold">R</text>
-                            </svg>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/TSYS_logo.svg" alt="TSYS"
-                                class="trust-logo-img">
-                            <svg viewBox="0 0 234 40" xmlns="http://www.w3.org/2000/svg" class="trust-logo-img"
-                                fill="currentColor">
-                                <path
-                                    d="M35.758 26.3614C34.9689 27.4266 33.9629 28.255 32.7399 28.8468C31.5169 29.3992 30.215 29.6753 28.8341 29.6753C26.6248 29.6753 24.7509 29.1427 23.2122 28.0775C21.713 27.0123 20.5689 25.592 19.7799 23.8167C19.0303 22.0414 18.6555 20.0885 18.6555 17.9581C18.6555 15.7488 19.0698 13.7762 19.8983 12.0403C20.7267 10.2649 21.9103 8.86438 23.4489 7.83863C25.027 6.81288 26.8615 6.3 28.9525 6.3C30.6884 6.3 32.1481 6.61562 33.3317 7.24685C34.5547 7.87808 35.5213 8.62767 36.2314 9.49562C36.547 8.58822 37.0599 7.93726 37.77 7.54274C38.5196 7.10877 39.4073 6.89178 40.433 6.89178H40.7289C41.1629 6.89178 41.3799 7.12849 41.3799 7.60192V28.7486C41.3799 29.1826 41.1629 29.3996 40.7289 29.3996H36.3497C35.9552 29.3996 35.758 29.1826 35.758 28.7486V26.3614ZM30.0769 24.3493C30.8265 24.3493 31.6352 24.1915 32.5032 23.8759C33.4106 23.5208 34.1799 22.8896 34.8111 21.9822C35.4424 21.0748 35.758 19.7334 35.758 17.9581C35.758 16.1827 35.4424 14.8611 34.8111 13.9931C34.1799 13.0857 33.4303 12.494 32.5624 12.2178C31.6944 11.9022 30.8856 11.7444 30.1361 11.7444C29.347 11.7444 28.4988 11.9219 27.5914 12.277C26.7235 12.6321 25.9739 13.2633 25.3426 14.1707C24.7509 15.0781 24.455 16.3405 24.455 17.9581C24.455 19.6545 24.7706 20.9762 25.4018 21.923C26.0725 22.8304 26.8418 23.4616 27.7098 23.8167C28.5777 24.1718 29.3667 24.3493 30.0769 24.3493Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M1.18142 22.7158C2.08465 23.4689 3.0394 24.0631 4.04223 24.495C5.04506 24.9303 6.25395 25.1479 7.67234 25.1479C10.0729 25.1479 11.2715 24.3775 11.2715 22.8333C11.2715 22.1596 10.9075 21.6276 10.1794 21.2303C9.45133 20.8364 8.56527 20.4599 7.52466 20.1041C6.48062 19.7482 5.42971 19.3129 4.36849 18.7982C3.30728 18.2834 2.41091 17.6029 1.68283 16.7495C0.954749 15.8997 0.590708 14.7424 0.590708 13.2776C0.590708 11.6539 0.992527 10.3411 1.7996 9.32886C2.60667 8.32008 3.66789 7.57733 4.98668 7.10403C6.30547 6.63074 7.71012 6.39236 9.20406 6.39236C11.0517 6.39236 12.5869 6.68947 13.8061 7.28368C14.8295 7.71897 15.4958 8.24408 15.8117 8.85556C16.1277 9.4705 16.1277 10.3307 15.8117 11.4362L15.6332 12.0892C15.5164 12.407 15.3584 12.5625 15.1627 12.5625C15.0459 12.5625 14.9463 12.5314 14.8673 12.4726C14.7883 12.4139 14.6715 12.3655 14.5136 12.3241C12.6624 11.4155 10.856 10.9595 9.08386 10.9595C8.29739 10.9595 7.62769 11.1184 7.0782 11.4328C6.52527 11.7506 6.25052 12.2446 6.25052 12.9183C6.25052 13.592 6.61456 14.1343 7.34264 14.5489C8.07072 14.9635 8.95679 15.3504 9.99739 15.7062C11.038 16.0621 12.0923 16.4974 13.1536 17.0121C14.2148 17.5269 15.1111 18.2005 15.8392 19.0296C16.5673 19.8622 16.9313 20.9677 16.9313 22.3531C16.9313 24.571 16.1449 26.3605 14.5719 27.7251C12.999 29.0897 10.9144 29.7737 8.318 29.7737C6.66607 29.7737 5.22021 29.487 3.98041 28.9135C2.74061 28.34 1.76869 27.5766 1.06121 26.63C0.353738 25.6799 0 24.6919 0 23.6624C0 22.8713 0.23697 22.474 0.707476 22.474C0.865456 22.474 1.02344 22.5534 1.17798 22.7123L1.18142 22.7158Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M98.266 30.6106C98.5208 29.9967 98.5346 29.3105 98.3073 28.6829L90.7585 7.63679C90.7206 7.48161 90.7275 7.32298 90.7894 7.16435C90.848 7.00917 90.9548 6.92985 91.1132 6.92985H92.3495C93.9578 6.92985 95.1459 7.26435 95.9104 7.93336C96.6749 8.60236 97.3913 9.86106 98.0594 11.706L101.71 22.6722L106.655 7.69886C106.889 7.18849 107.203 6.9333 107.599 6.9333H111.955C112.151 6.9333 112.269 7.01261 112.31 7.1678C112.348 7.32643 112.348 7.48161 112.31 7.64024L104.658 29.1588C103.99 31.083 103.273 32.8038 102.509 34.3177C101.744 35.8316 100.811 37.0178 99.7124 37.8834C98.6138 38.749 97.2191 39.18 95.5316 39.18C94.2746 39.18 93.2139 38.9145 92.3529 38.3834C91.4885 37.8524 90.8411 37.1765 90.4106 36.3488C89.9801 35.5246 89.7632 34.7177 89.7632 33.9314C89.7632 33.6556 89.8217 33.4004 89.9388 33.1659C90.0559 32.9314 90.2316 32.8107 90.4692 32.8107C90.5484 32.8107 90.6345 32.8417 90.7343 32.9004C90.8308 32.959 90.9203 33.0279 90.9995 33.1073C92.0602 33.8935 93.1175 34.2866 94.1782 34.2866C95.2389 34.2866 96.1411 33.9418 96.7679 33.2555C97.2673 32.7072 97.7701 31.8244 98.2694 30.614L98.266 30.6106Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M64.3655 6.92985H63.3593C61.7031 6.92985 60.4722 7.26646 59.6665 7.93968C58.8609 8.61289 58.1797 9.89686 57.6265 11.7951L54.2448 22.7435C54.1584 23.0211 53.7642 23.0211 53.6812 22.7435L49.0583 7.7037C48.9407 7.19012 48.6434 6.93332 48.1731 6.93332H43.7404C43.5433 6.93332 43.405 7.01314 43.3254 7.16929C43.2701 7.28381 43.2563 7.39833 43.2805 7.50937C43.2909 7.55449 43.3047 7.5996 43.3254 7.64471L49.8605 26.6197C50.3999 28.1848 51.8694 29.2362 53.5222 29.2362H54.5837C56.2399 29.2362 57.7095 28.1813 58.2489 26.6093L64.7251 7.64124C64.8427 7.16582 64.7251 6.92985 64.369 6.92985H64.3655Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M88.0154 6.92985H87.0092C85.353 6.92985 84.1221 7.26646 83.3164 7.93968C82.5108 8.61289 81.8296 9.89686 81.2764 11.7951L77.8947 22.7435C77.8083 23.0211 77.4141 23.0211 77.3311 22.7435L72.7082 7.7037C72.5906 7.19012 72.2933 6.93332 71.823 6.93332H67.3903C67.1932 6.93332 67.0549 7.01314 66.9753 7.16929C66.92 7.28381 66.9062 7.39833 66.9304 7.50937C66.9408 7.55449 66.9546 7.5996 66.9753 7.64471L73.5104 26.6197C74.0498 28.1848 75.5193 29.2362 77.1721 29.2362H78.2336C79.8898 29.2362 81.3594 28.1813 81.8988 26.6093L88.375 7.64124C88.4926 7.16582 88.375 6.92985 88.0189 6.92985H88.0154Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M151.062 4.94146C151.381 4.94146 151.606 5.25385 151.505 5.55572L142.909 31.2413C142.146 33.5215 140.011 35.0585 137.606 35.0586H112.804C112.486 35.0584 112.262 34.7462 112.363 34.4444L121.01 8.75005C121.776 6.47431 123.91 4.94146 126.311 4.94146H151.062ZM136.226 19.5147C133.829 17.1122 129.943 17.1122 127.546 19.5147L125.115 21.9502C123.6 23.4683 123.582 25.9223 125.061 27.462C126.541 29.0015 129.167 29.0235 130.725 27.462H130.728L131.538 26.6514C131.731 26.4577 132.045 26.4576 132.238 26.6514L133.047 27.462C134.605 29.0236 137.183 29.0537 138.712 27.462C140.24 25.8704 140.174 23.4682 138.657 21.9502L136.226 19.5147ZM139.958 14.6514C138.884 14.4007 137.705 15.21 137.321 16.4561C136.937 17.7024 137.498 18.9162 138.569 19.167C139.643 19.4178 140.822 18.6086 141.206 17.3624C141.589 16.1161 141.032 14.9023 139.958 14.6514ZM126.47 16.4532C126.086 15.2072 124.908 14.3979 123.834 14.6485C122.762 14.8994 122.202 16.1141 122.586 17.3604C122.97 18.6064 124.151 19.4158 125.222 19.1651C126.294 18.9142 126.854 17.6995 126.47 16.4532ZM130.95 13.4376C130.549 12.0024 129.375 11.0584 128.329 11.3282C127.285 11.5955 126.761 12.9763 127.161 14.4112C127.561 15.8463 128.735 16.7903 129.782 16.5206C130.826 16.2533 131.35 14.8726 130.95 13.4376ZM135.463 11.3282C134.416 11.0584 133.242 12.0024 132.842 13.4376C132.441 14.8699 132.963 16.2507 134.009 16.5206C135.056 16.7903 136.23 15.8463 136.631 14.4112C137.031 12.9791 136.509 11.5982 135.463 11.3282ZM135.463 11.3282C134.416 11.0584 133.242 12.0024 132.842 13.4376C132.441 14.8699 132.963 16.2507 134.009 16.5206C135.056 16.7903 136.23 15.8463 136.631 14.4112C137.031 12.9791 136.509 11.5982 135.463 11.3282Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M155.976 35.3233V7.20617C155.976 6.97226 156.166 6.78307 156.402 6.78307H160.187C160.408 6.78307 160.591 6.95162 160.612 7.17177L160.737 8.61993C160.768 8.98455 161.214 9.13935 161.47 8.87792C162.157 8.159 162.939 7.60863 163.81 7.22681C164.968 6.71771 166.247 6.46317 167.647 6.46317C169.746 6.46317 171.481 6.94474 172.857 7.90789C174.229 8.87104 175.253 10.1713 175.927 11.8052C176.601 13.4391 176.936 15.2863 176.936 17.3502C176.936 19.4141 176.587 21.2682 175.885 22.9158C175.183 24.5635 174.129 25.8638 172.715 26.8131C171.301 27.7625 169.531 28.2407 167.405 28.2407C166.41 28.2407 165.5 28.134 164.681 27.9208C163.858 27.7075 163.132 27.3979 162.5 26.9955C162.178 26.7925 161.884 26.5758 161.615 26.3419C161.345 26.108 160.906 26.2903 160.906 26.6584V31.2746C160.906 33.7478 158.891 35.7532 156.405 35.7532C156.17 35.7532 155.98 35.5641 155.98 35.3301L155.976 35.3233ZM166.634 23.8171C168.007 23.8171 169.082 23.5144 169.863 22.9124C170.644 22.3104 171.208 21.5193 171.561 20.5424C171.91 19.5654 172.086 18.5266 172.086 17.4293C172.086 16.332 171.903 15.2072 171.54 14.2165C171.177 13.2259 170.593 12.4209 169.784 11.8052C168.975 11.1895 167.9 10.8799 166.555 10.8799C165.317 10.8799 164.273 11.1826 163.426 11.7846C162.579 12.3865 161.94 13.1846 161.508 14.1752C161.075 15.1659 160.861 16.2391 160.861 17.388C160.861 18.5369 161.062 19.6446 161.466 20.6215C161.466 20.6215 161.466 20.6215 161.466 20.6215ZM166.634 23.8171"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M188.66 28.2257C186.445 28.2257 184.556 27.772 183.005 26.8611C181.449 25.9501 180.276 24.6886 179.478 23.0661C178.679 21.4471 178.28 19.5668 178.28 17.4252C178.28 15.2837 178.693 13.3897 179.516 11.7431C180.339 10.0966 181.529 8.80752 183.084 7.86909C184.64 6.9341 186.511 6.46317 188.701 6.46317C190.322 6.46317 191.742 6.75191 192.957 7.32597C194.172 7.90346 195.193 8.68377 196.019 9.67376C196.842 10.6637 197.46 11.7878 197.862 13.0459C198.265 14.3006 198.456 15.6171 198.432 17.0024C198.432 17.0127 198.432 17.0265 198.432 17.0368C198.404 17.3531 198.38 17.6624 198.352 17.9649C198.334 18.1609 198.38 17.6624 198.352 17.9649C198.334 18.1609 198.38 17.6624 198.352 17.9649"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M209.837 27.9605C208.114 27.9605 206.692 27.7329 205.574 27.2744C204.456 26.8193 203.619 26.0815 203.069 25.0609C202.515 24.0404 202.242 22.6717 202.242 20.9547V11.5149C202.242 11.2804 202.051 11.0908 201.816 11.0908H199.397C199.162 11.0908 198.971 10.9012 198.971 10.6668V7.16733C198.971 6.93289 199.162 6.74327 199.397 6.74327H201.816C202.051 6.74327 202.242 6.55364 202.242 6.3192V1.24417C202.242 1.00973 202.432 0.820107 202.667 0.820107H206.744C206.979 0.820107 207.169 1.00973 207.169 1.24417V6.3123C207.169 6.54675 207.36 6.73637 207.595 6.73637H211.713C211.948 6.73637 212.139 6.92599 212.139 7.16044V10.6599C212.139 10.8943 211.948 11.0839 211.713 11.0839H207.595C207.36 11.0839 207.169 11.2736 207.169 11.508V20.3031C207.169 21.3788 207.356 22.1959 207.733 22.7579C208.111 23.3233 208.958 23.6026 210.28 23.6026H211.55C211.786 23.6026 211.976 23.7922 211.976 24.0266V27.526C211.976 27.7605 211.786 27.9501 211.55 27.9501H209.834L209.837 27.9605Z"
-                                    fill="currentColor"></path>
-                            </svg>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/DoorDash_Logo.svg"
                                 alt="DoorDash" class="trust-logo-img">
-                            <img src="https://irp.cdn-website.com/8f521164/dms3rep/multi/simple_biz+logo-01-01.webp"
-                                alt="Simple.biz" class="trust-logo-img">
                         </div>
-                        <!-- Slide 2 (Duplicate of Slide 1) -->
-                        <div class="trust-bar-logos-slide">
+                        <!-- Slide 2 (Duplicate for Infinite Loop) -->
+                        <div class="trust-bar-logos-slide" aria-hidden="true">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/intercom.svg"
+                                alt="Intercom" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/zendesk.svg"
+                                alt="Zendesk" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/slack.svg"
+                                alt="Slack" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/google-workspace.svg"
+                                alt="Google Workspace" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/notion.svg"
+                                alt="Notion" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/asana.svg"
+                                alt="Asana" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/zoom.svg"
+                                alt="Zoom" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/hubspot.svg"
+                                alt="HubSpot" class="trust-logo-img">
+                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/stripe.svg"
+                                alt="Stripe" class="trust-logo-img">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Global_Payments_Inc._logo.svg"
                                 alt="Global Payments" class="trust-logo-img">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 40" class="trust-logo-img">
-                                <text x="5" y="27" fill="#1b7339" font-family="'Outfit', 'Inter', sans-serif"
-                                    font-weight="500" font-size="22" letter-spacing="-0.5">Central</text>
-                                <text x="76" y="27" fill="#2d2926" font-family="'Outfit', 'Inter', sans-serif"
-                                    font-weight="700" font-size="22" letter-spacing="-0.5">Payment</text>
-                                <text x="7" y="36" fill="#6b6b6b" font-family="'Inter', sans-serif" font-size="5.5"
-                                    font-weight="600" letter-spacing="0.2">A TSYS COMPANY</text>
-                                <path
-                                    d="M 125,32 C 145,38 165,38 175,28 C 179,24 181,20 180,16 C 179,12 174,10 174,10 C 174,10 180,12 181,17 C 182,22 178,27 172,31 C 160,40 140,40 125,32 Z"
-                                    fill="#1b7339" />
-                                <circle cx="171" cy="22" r="3" fill="none" stroke="#2d2926" stroke-width="0.6" />
-                                <text x="169.5" y="23.5" fill="#2d2926" font-family="sans-serif" font-size="4.2"
-                                    font-weight="bold">R</text>
-                            </svg>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/TSYS_logo.svg" alt="TSYS"
-                                class="trust-logo-img">
-                            <svg viewBox="0 0 234 40" xmlns="http://www.w3.org/2000/svg" class="trust-logo-img"
-                                fill="currentColor">
-                                <path
-                                    d="M35.758 26.3614C34.9689 27.4266 33.9629 28.255 32.7399 28.8468C31.5169 29.3992 30.215 29.6753 28.8341 29.6753C26.6248 29.6753 24.7509 29.1427 23.2122 28.0775C21.713 27.0123 20.5689 25.592 19.7799 23.8167C19.0303 22.0414 18.6555 20.0885 18.6555 17.9581C18.6555 15.7488 19.0698 13.7762 19.8983 12.0403C20.7267 10.2649 21.9103 8.86438 23.4489 7.83863C25.027 6.81288 26.8615 6.3 28.9525 6.3C30.6884 6.3 32.1481 6.61562 33.3317 7.24685C34.5547 7.87808 35.5213 8.62767 36.2314 9.49562C36.547 8.58822 37.0599 7.93726 37.77 7.54274C38.5196 7.10877 39.4073 6.89178 40.433 6.89178H40.7289C41.1629 6.89178 41.3799 7.12849 41.3799 7.60192V28.7486C41.3799 29.1826 41.1629 29.3996 40.7289 29.3996H36.3497C35.9552 29.3996 35.758 29.1826 35.758 28.7486V26.3614ZM30.0769 24.3493C30.8265 24.3493 31.6352 24.1915 32.5032 23.8759C33.4106 23.5208 34.1799 22.8896 34.8111 21.9822C35.4424 21.0748 35.758 19.7334 35.758 17.9581C35.758 16.1827 35.4424 14.8611 34.8111 13.9931C34.1799 13.0857 33.4303 12.494 32.5624 12.2178C31.6944 11.9022 30.8856 11.7444 30.1361 11.7444C29.347 11.7444 28.4988 11.9219 27.5914 12.277C26.7235 12.6321 25.9739 13.2633 25.3426 14.1707C24.7509 15.0781 24.455 16.3405 24.455 17.9581C24.455 19.6545 24.7706 20.9762 25.4018 21.923C26.0725 22.8304 26.8418 23.4616 27.7098 23.8167C28.5777 24.1718 29.3667 24.3493 30.0769 24.3493Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M1.18142 22.7158C2.08465 23.4689 3.0394 24.0631 4.04223 24.495C5.04506 24.9303 6.25395 25.1479 7.67234 25.1479C10.0729 25.1479 11.2715 24.3775 11.2715 22.8333C11.2715 22.1596 10.9075 21.6276 10.1794 21.2303C9.45133 20.8364 8.56527 20.4599 7.52466 20.1041C6.48062 19.7482 5.42971 19.3129 4.36849 18.7982C3.30728 18.2834 2.41091 17.6029 1.68283 16.7495C0.954749 15.8997 0.590708 14.7424 0.590708 13.2776C0.590708 11.6539 0.992527 10.3411 1.7996 9.32886C2.60667 8.32008 3.66789 7.57733 4.98668 7.10403C6.30547 6.63074 7.71012 6.39236 9.20406 6.39236C11.0517 6.39236 12.5869 6.68947 13.8061 7.28368C14.8295 7.71897 15.4958 8.24408 15.8117 8.85556C16.1277 9.4705 16.1277 10.3307 15.8117 11.4362L15.6332 12.0892C15.5164 12.407 15.3584 12.5625 15.1627 12.5625C15.0459 12.5625 14.9463 12.5314 14.8673 12.4726C14.7883 12.4139 14.6715 12.3655 14.5136 12.3241C12.6624 11.4155 10.856 10.9595 9.08386 10.9595C8.29739 10.9595 7.62769 11.1184 7.0782 11.4328C6.52527 11.7506 6.25052 12.2446 6.25052 12.9183C6.25052 13.592 6.61456 14.1343 7.34264 14.5489C8.07072 14.9635 8.95679 15.3504 9.99739 15.7062C11.038 16.0621 12.0923 16.4974 13.1536 17.0121C14.2148 17.5269 15.1111 18.2005 15.8392 19.0296C16.5673 19.8622 16.9313 20.9677 16.9313 22.3531C16.9313 24.571 16.1449 26.3605 14.5719 27.7251C12.999 29.0897 10.9144 29.7737 8.318 29.7737C6.66607 29.7737 5.22021 29.487 3.98041 28.9135C2.74061 28.34 1.76869 27.5766 1.06121 26.63C0.353738 25.6799 0 24.6919 0 23.6624C0 22.8713 0.23697 22.474 0.707476 22.474C0.865456 22.474 1.02344 22.5534 1.17798 22.7123L1.18142 22.7158Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M98.266 30.6106C98.5208 29.9967 98.5346 29.3105 98.3073 28.6829L90.7585 7.63679C90.7206 7.48161 90.7275 7.32298 90.7894 7.16435C90.848 7.00917 90.9548 6.92985 91.1132 6.92985H92.3495C93.9578 6.92985 95.1459 7.26435 95.9104 7.93336C96.6749 8.60236 97.3913 9.86106 98.0594 11.706L101.71 22.6722L106.655 7.69886C106.889 7.18849 107.203 6.9333 107.599 6.9333H111.955C112.151 6.9333 112.269 7.01261 112.31 7.1678C112.348 7.32643 112.348 7.48161 112.31 7.64024L104.658 29.1588C103.99 31.083 103.273 32.8038 102.509 34.3177C101.744 35.8316 100.811 37.0178 99.7124 37.8834C98.6138 38.749 97.2191 39.18 95.5316 39.18C94.2746 39.18 93.2139 38.9145 92.3529 38.3834C91.4885 37.8524 90.8411 37.1765 90.4106 36.3488C89.9801 35.5246 89.7632 34.7177 89.7632 33.9314C89.7632 33.6556 89.8217 33.4004 89.9388 33.1659C90.0559 32.9314 90.2316 32.8107 90.4692 32.8107C90.5484 32.8107 90.6345 32.8417 90.7343 32.9004C90.8308 32.959 90.9203 33.0279 90.9995 33.1073C92.0602 33.8935 93.1175 34.2866 94.1782 34.2866C95.2389 34.2866 96.1411 33.9418 96.7679 33.2555C97.2673 32.7072 97.7701 31.8244 98.2694 30.614L98.266 30.6106Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M64.3655 6.92985H63.3593C61.7031 6.92985 60.4722 7.26646 59.6665 7.93968C58.8609 8.61289 58.1797 9.89686 57.6265 11.7951L54.2448 22.7435C54.1584 23.0211 53.7642 23.0211 53.6812 22.7435L49.0583 7.7037C48.9407 7.19012 48.6434 6.93332 48.1731 6.93332H43.7404C43.5433 6.93332 43.405 7.01314 43.3254 7.16929C43.2701 7.28381 43.2563 7.39833 43.2805 7.50937C43.2909 7.55449 43.3047 7.5996 43.3254 7.64471L49.8605 26.6197C50.3999 28.1848 51.8694 29.2362 53.5222 29.2362H54.5837C56.2399 29.2362 57.7095 28.1813 58.2489 26.6093L64.7251 7.64124C64.8427 7.16582 64.7251 6.92985 64.369 6.92985H64.3655Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M88.0154 6.92985H87.0092C85.353 6.92985 84.1221 7.26646 83.3164 7.93968C82.5108 8.61289 81.8296 9.89686 81.2764 11.7951L77.8947 22.7435C77.8083 23.0211 77.4141 23.0211 77.3311 22.7435L72.7082 7.7037C72.5906 7.19012 72.2933 6.93332 71.823 6.93332H67.3903C67.1932 6.93332 67.0549 7.01314 66.9753 7.16929C66.92 7.28381 66.9062 7.39833 66.9304 7.50937C66.9408 7.55449 66.9546 7.5996 66.9753 7.64471L73.5104 26.6197C74.0498 28.1848 75.5193 29.2362 77.1721 29.2362H78.2336C79.8898 29.2362 81.3594 28.1813 81.8988 26.6093L88.375 7.64124C88.4926 7.16582 88.375 6.92985 88.0189 6.92985H88.0154Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M151.062 4.94146C151.381 4.94146 151.606 5.25385 151.505 5.55572L142.909 31.2413C142.146 33.5215 140.011 35.0585 137.606 35.0586H112.804C112.486 35.0584 112.262 34.7462 112.363 34.4444L121.01 8.75005C121.776 6.47431 123.91 4.94146 126.311 4.94146H151.062ZM136.226 19.5147C133.829 17.1122 129.943 17.1122 127.546 19.5147L125.115 21.9502C123.6 23.4683 123.582 25.9223 125.061 27.462C126.541 29.0015 129.167 29.0235 130.725 27.462H130.728L131.538 26.6514C131.731 26.4577 132.045 26.4576 132.238 26.6514L133.047 27.462C134.605 29.0236 137.183 29.0537 138.712 27.462C140.24 25.8704 140.174 23.4682 138.657 21.9502L136.226 19.5147ZM139.958 14.6514C138.884 14.4007 137.705 15.21 137.321 16.4561C136.937 17.7024 137.498 18.9162 138.569 19.167C139.643 19.4178 140.822 18.6086 141.206 17.3624C141.589 16.1161 141.032 14.9023 139.958 14.6514ZM126.47 16.4532C126.086 15.2072 124.908 14.3979 123.834 14.6485C122.762 14.8994 122.202 16.1141 122.586 17.3604C122.97 18.6064 124.151 19.4158 125.222 19.1651C126.294 18.9142 126.854 17.6995 126.47 16.4532ZM130.95 13.4376C130.549 12.0024 129.375 11.0584 128.329 11.3282C127.285 11.5955 126.761 12.9763 127.161 14.4112C127.561 15.8463 128.735 16.7903 129.782 16.5206C130.826 16.2533 131.35 14.8726 130.95 13.4376ZM135.463 11.3282C134.416 11.0584 133.242 12.0024 132.842 13.4376C132.441 14.8699 132.963 16.2507 134.009 16.5206C135.056 16.7903 136.23 15.8463 136.631 14.4112C137.031 12.9791 136.509 11.5982 135.463 11.3282ZM135.463 11.3282C134.416 11.0584 133.242 12.0024 132.842 13.4376C132.441 14.8699 132.963 16.2507 134.009 16.5206C135.056 16.7903 136.23 15.8463 136.631 14.4112C137.031 12.9791 136.509 11.5982 135.463 11.3282Z"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M155.976 35.3233V7.20617C155.976 6.97226 156.166 6.78307 156.402 6.78307H160.187C160.408 6.78307 160.591 6.95162 160.612 7.17177L160.737 8.61993C160.768 8.98455 161.214 9.13935 161.47 8.87792C162.157 8.159 162.939 7.60863 163.81 7.22681C164.968 6.71771 166.247 6.46317 167.647 6.46317C169.746 6.46317 171.481 6.94474 172.857 7.90789C174.229 8.87104 175.253 10.1713 175.927 11.8052C176.601 13.4391 176.936 15.2863 176.936 17.3502C176.936 19.4141 176.587 21.2682 175.885 22.9158C175.183 24.5635 174.129 25.8638 172.715 26.8131C171.301 27.7625 169.531 28.2407 167.405 28.2407C166.41 28.2407 165.5 28.134 164.681 27.9208C163.858 27.7075 163.132 27.3979 162.5 26.9955C162.178 26.7925 161.884 26.5758 161.615 26.3419C161.345 26.108 160.906 26.2903 160.906 26.6584V31.2746C160.906 33.7478 158.891 35.7532 156.405 35.7532C156.17 35.7532 155.98 35.5641 156.405 35.7532C156.17 35.7532 155.98 35.5641 155.98 35.3301L155.976 35.3233ZM166.634 23.8171C168.007 23.8171 169.082 23.5144 169.863 22.9124C170.644 22.3104 171.208 21.5193 171.561 20.5424C171.91 19.5654 172.086 18.5266 172.086 17.4293C172.086 16.332 171.903 15.2072 171.54 14.2165C171.177 13.2259 170.593 12.4209 169.784 11.8052C168.975 11.1895 167.9 10.8799 166.555 10.8799C165.317 10.8799 164.273 11.1826 163.426 11.7846C162.579 12.3865 161.94 13.1846 161.508 14.1752C161.075 15.1659 160.861 16.2391 160.861 17.388C160.861 18.5369 161.062 19.6446 161.466 20.6215C161.466 20.6215 161.466 20.6215 161.466 20.6215ZM166.634 23.8171"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M188.66 28.2257C186.445 28.2257 184.556 27.772 183.005 26.8611C181.449 25.9501 180.276 24.6886 179.478 23.0661C178.679 21.4471 178.28 19.5668 178.28 17.4252C178.28 15.2837 178.693 13.3897 179.516 11.7431C180.339 10.0966 181.529 8.80752 183.084 7.86909C184.64 6.9341 186.511 6.46317 188.701 6.46317C190.322 6.46317 191.742 6.75191 192.957 7.32597C194.172 7.90346 195.193 8.68377 196.019 9.67376C196.842 10.6637 197.46 11.7878 197.862 13.0459C198.265 14.3006 198.456 15.6171 198.432 17.0024C198.432 17.0127 198.432 17.0265 198.432 17.0368C198.404 17.3531 198.38 17.6624 198.352 17.9649C198.334 18.1609 198.38 17.6624 198.352 17.9649C198.334 18.1609 198.38 17.6624 198.352 17.9649"
-                                    fill="currentColor"></path>
-                                <path
-                                    d="M209.837 27.9605C208.114 27.9605 206.692 27.7329 205.574 27.2744C204.456 26.8193 203.619 26.0815 203.069 25.0609C202.515 24.0404 202.242 22.6717 202.242 20.9547V11.5149C202.242 11.2804 202.051 11.0908 201.816 11.0908H199.397C199.162 11.0908 198.971 10.9012 198.971 10.6668V7.16733C198.971 6.93289 199.162 6.74327 199.397 6.74327H201.816C202.051 6.74327 202.242 6.55364 202.242 6.3192V1.24417C202.242 1.00973 202.432 0.820107 202.667 0.820107H206.744C206.979 0.820107 207.169 1.00973 207.169 1.24417V6.3123C207.169 6.54675 207.36 6.73637 207.595 6.73637H211.713C211.948 6.73637 212.139 6.92599 212.139 7.16044V10.6599C212.139 10.8943 211.948 11.0839 211.713 11.0839H207.595C207.36 11.0839 207.169 11.2736 207.169 11.508V20.3031C207.169 21.3788 207.356 22.1959 207.733 22.7579C208.111 23.3233 208.958 23.6026 210.28 23.6026H211.55C211.786 23.6026 211.976 23.7922 211.976 24.0266V27.526C211.976 27.7605 211.786 27.9501 211.55 27.9501H209.834L209.837 27.9605Z"
-                                    fill="currentColor"></path>
-                            </svg>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/DoorDash_Logo.svg"
-                                alt="DoorDash" class="trust-logo-img">
-                            <img src="https://irp.cdn-website.com/8f521164/dms3rep/multi/simple_biz+logo-01-01.webp"
-                                alt="Simple.biz" class="trust-logo-img">
                         </div>
                     </div>
                 </div>
@@ -3822,14 +3930,25 @@
                             workflows and keeping close track of client retention metrics, I help your business scale
                             without losing the personal touch that builds lifetime customer value.
                         </p>
-                        <a href="#proof" class="btn-secondary-link" style="margin-top: 1.8rem;">
-                            View my experience
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
+                        <div class="about-actions">
+                            <a href="#proof" class="btn-primary">
+                                View My Experience
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                            <a href="Wilmar_Absin_Resume.pdf" download="Wilmar_Absin_Resume.pdf" class="btn-secondary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download Resume
+                            </a>
+                        </div>
                     </div>
 
 
@@ -3989,20 +4108,6 @@
                         data entry, tool integrations, and daily operations with accuracy and efficiency.</p>
                 </div>
 
-            </div>
-
-            <!-- Call-to-Action (CTA) Element -->
-            <div class="services-cta reveal reveal-delay-4">
-                <a href="#cta-footer" class="services-btn-primary">Let's Work Together</a>
-                <a href="https://calendly.com/iamwilmarabsin/discovery-call?back=1&amp;month=2026-07"
-                    class="services-btn-secondary" target="_blank" rel="noopener">
-                    Book a discovery call
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="arrow-icon">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
             </div>
         </div>
     </section>
@@ -4332,12 +4437,68 @@
 
             </div>
 
-            <!-- Cost Comparison Text -->
-            <p class="pricing-comparison-text reveal reveal-delay-3">
-                Compare my flat hourly rate of <strong style="color: var(--accent);">$9.99/hr</strong> with the typical
-                cost of hiring an in-house employee or working with a customer support agency in the U.S. Enjoy
-                experienced support without the overhead, long-term commitments, or hidden employment costs.
-            </p>
+            <!-- Pricing Trust Bar (White Card Style matching Pricing Cards) -->
+            <div class="pricing-trust-bar reveal reveal-delay-3">
+                <div class="pricing-trust-item">
+                    <div class="pricing-trust-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="6"></circle>
+                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                        </svg>
+                    </div>
+                    <div class="pricing-trust-text">
+                        <span class="pricing-trust-heading">8+ Years Experience</span>
+                        <span class="pricing-trust-desc">Customer Experience Partner</span>
+                    </div>
+                </div>
+
+                <div class="pricing-trust-divider"></div>
+
+                <div class="pricing-trust-item">
+                    <div class="pricing-trust-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <polyline points="9 12 11 14 15 10"></polyline>
+                        </svg>
+                    </div>
+                    <div class="pricing-trust-text">
+                        <span class="pricing-trust-heading">No Long-Term Contracts</span>
+                        <span class="pricing-trust-desc">Flexible month-to-month plans</span>
+                    </div>
+                </div>
+
+                <div class="pricing-trust-divider"></div>
+
+                <div class="pricing-trust-item">
+                    <div class="pricing-trust-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <div class="pricing-trust-text">
+                        <span class="pricing-trust-heading">Global Remote Support</span>
+                        <span class="pricing-trust-desc">Available across EST, PST &amp; GMT</span>
+                    </div>
+                </div>
+
+                <div class="pricing-trust-divider"></div>
+
+                <div class="pricing-trust-item">
+                    <div class="pricing-trust-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="5" x2="5" y2="19"></line>
+                            <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                            <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <div class="pricing-trust-text">
+                        <span class="pricing-trust-heading">Up to 70% Cost Savings</span>
+                        <span class="pricing-trust-desc">Compared to traditional in-house hiring</span>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </section>
@@ -4392,24 +4553,26 @@
                                         communication,
                                         payments, reporting, and daily operations&mdash;empowering them to run and grow
                                         their business with ease.</p>
-                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                    <ul class="exp-list">
-                                        <li>Delivered customer support via email, live chat, phone, and community
-                                            channels,
-                                            ensuring timely issue resolution and high customer satisfaction.</li>
-                                        <li>Onboarded new customers, conducted product demos, and provided training on
-                                            CRM
-                                            features and best practices.</li>
-                                        <li>Troubleshot platform, integration, and payment terminal issues while
-                                            handling
-                                            merchant inquiries, disputes, chargebacks, and settlement investigations.
-                                        </li>
-                                        <li>Managed and prioritized support tickets in Jira, maintaining accurate
-                                            documentation and updating knowledge base articles.</li>
-                                        <li>Collaborated with product, engineering, and payments teams to enhance
-                                            customer
-                                            experience and improve support processes.</li>
-                                    </ul>
+                                    <div class="exp-responsibilities-box">
+                                        <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                        <ul class="exp-list">
+                                            <li>Delivered customer support via email, live chat, phone, and community
+                                                channels,
+                                                ensuring timely issue resolution and high customer satisfaction.</li>
+                                            <li>Onboarded new customers, conducted product demos, and provided training on
+                                                CRM
+                                                features and best practices.</li>
+                                            <li>Troubleshot platform, integration, and payment terminal issues while
+                                                handling
+                                                merchant inquiries, disputes, chargebacks, and settlement investigations.
+                                            </li>
+                                            <li>Managed and prioritized support tickets in Jira, maintaining accurate
+                                                documentation and updating knowledge base articles.</li>
+                                            <li>Collaborated with product, engineering, and payments teams to enhance
+                                                customer
+                                                experience and improve support processes.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4441,22 +4604,24 @@
                                         helping clients establish a strong online presence and generate consistent
                                         inbound
                                         leads.</p>
-                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                    <ul class="exp-list">
-                                        <li>Conducted outbound prospecting and cold calling to generate qualified leads
-                                            for
-                                            website design, development, and maintenance services.</li>
-                                        <li>Scheduled discovery calls and sales appointments for the business
-                                            development
-                                            team, maintaining a consistent pipeline of qualified leads.</li>
-                                        <li>Maintained prospect lists using CRM systems, ensuring accurate contact
-                                            information and activity tracking.</li>
-                                        <li>Represented the company's website design, development, and digital marketing
-                                            services with professionalism, building strong first impressions with
-                                            prospective clients.</li>
-                                        <li>Met and exceeded daily and weekly KPIs, including outbound calls,
-                                            qualified leads, appointments booked, and CRM activity targets.</li>
-                                    </ul>
+                                    <div class="exp-responsibilities-box">
+                                        <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                        <ul class="exp-list">
+                                            <li>Conducted outbound prospecting and cold calling to generate qualified leads
+                                                for
+                                                website design, development, and maintenance services.</li>
+                                            <li>Scheduled discovery calls and sales appointments for the business
+                                                development
+                                                team, maintaining a consistent pipeline of qualified leads.</li>
+                                            <li>Maintained prospect lists using CRM systems, ensuring accurate contact
+                                                information and activity tracking.</li>
+                                            <li>Represented the company's website design, development, and digital marketing
+                                                services with professionalism, building strong first impressions with
+                                                prospective clients.</li>
+                                            <li>Met and exceeded daily and weekly KPIs, including outbound calls,
+                                                qualified leads, appointments booked, and CRM activity targets.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4490,23 +4655,25 @@
                                         point-of-sale systems, and financial technology services to businesses of all
                                         sizes.
                                     </p>
-                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                    <ul class="exp-list">
-                                        <li>Provided technical support for merchants via phone, email, and chat,
-                                            resolving
-                                            payment terminal and POS-related issues.</li>
-                                        <li>Diagnosed and troubleshot payment processing, connectivity, and hardware
-                                            concerns to minimize business downtime.</li>
-                                        <li>Delivered accurate, customer-focused solutions while consistently meeting
-                                            SLAs
-                                            and quality standards.</li>
-                                        <li>Documented technical issues and resolutions to contribute to internal
-                                            knowledge
-                                            base improvement.</li>
-                                        <li>Escalated complex cases to Level 2 support with thorough notes and
-                                            reproduction
-                                            steps.</li>
-                                    </ul>
+                                    <div class="exp-responsibilities-box">
+                                        <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                        <ul class="exp-list">
+                                            <li>Provided technical support for merchants via phone, email, and chat,
+                                                resolving
+                                                payment terminal and POS-related issues.</li>
+                                            <li>Diagnosed and troubleshot payment processing, connectivity, and hardware
+                                                concerns to minimize business downtime.</li>
+                                            <li>Delivered accurate, customer-focused solutions while consistently meeting
+                                                SLAs
+                                                and quality standards.</li>
+                                            <li>Documented technical issues and resolutions to contribute to internal
+                                                knowledge
+                                                base improvement.</li>
+                                            <li>Escalated complex cases to Level 2 support with thorough notes and
+                                                reproduction
+                                                steps.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4539,21 +4706,23 @@
                                         payment gateways, and business funding solutions. They serve thousands of
                                         merchants
                                         across industries including retail, restaurants, and professional services.</p>
-                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                    <ul class="exp-list">
-                                        <li>Assisted customers through phone, email, chat, and ticketing systems,
-                                            delivering
-                                            prompt and professional support.</li>
-                                        <li>Processed payment-related requests, account updates, card activations, and
-                                            billing inquiries with accuracy.</li>
-                                        <li>Maintained detailed customer records and ensured compliance with company
-                                            procedures and service standards.</li>
-                                        <li>Handled merchant escalations related to chargebacks, disputes, and payment
-                                            discrepancies.</li>
-                                        <li>Contributed to team performance goals by consistently achieving high CSAT
-                                            and
-                                            quality scores.</li>
-                                    </ul>
+                                    <div class="exp-responsibilities-box">
+                                        <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                        <ul class="exp-list">
+                                            <li>Assisted customers through phone, email, chat, and ticketing systems,
+                                                delivering
+                                                prompt and professional support.</li>
+                                            <li>Processed payment-related requests, account updates, card activations, and
+                                                billing inquiries with accuracy.</li>
+                                            <li>Maintained detailed customer records and ensured compliance with company
+                                                procedures and service standards.</li>
+                                            <li>Handled merchant escalations related to chargebacks, disputes, and payment
+                                                discrepancies.</li>
+                                            <li>Contributed to team performance goals by consistently achieving high CSAT
+                                                and
+                                                quality scores.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4586,22 +4755,24 @@
                                         retail businesses through its mobile marketplace, enabling fast, reliable
                                         delivery
                                         while supporting merchants and independent delivery partners.</p>
-                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                    <ul class="exp-list">
-                                        <li>Assisted customers, merchants, and Dashers with order, payment, delivery,
-                                            and
-                                            account-related inquiries via phone, chat, and email.</li>
-                                        <li>Investigated missing, delayed, or incorrect orders and coordinated with
-                                            merchants and delivery partners to provide timely resolutions.</li>
-                                        <li>Processed refunds, credits, cancellations, and account adjustments in
-                                            accordance
-                                            with company policies.</li>
-                                        <li>Troubleshot app, payment, and account access issues, guiding customers
-                                            through
-                                            effective solutions.</li>
-                                        <li>Demonstrated empathy and professionalism when handling escalated customer
-                                            concerns, helping retain customer trust and loyalty.</li>
-                                    </ul>
+                                    <div class="exp-responsibilities-box">
+                                        <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                        <ul class="exp-list">
+                                            <li>Assisted customers, merchants, and Dashers with order, payment, delivery,
+                                                and
+                                                account-related inquiries via phone, chat, and email.</li>
+                                            <li>Investigated missing, delayed, or incorrect orders and coordinated with
+                                                merchants and delivery partners to provide timely resolutions.</li>
+                                            <li>Processed refunds, credits, cancellations, and account adjustments in
+                                                accordance
+                                                with company policies.</li>
+                                            <li>Troubleshot app, payment, and account access issues, guiding customers
+                                                through
+                                                effective solutions.</li>
+                                            <li>Demonstrated empathy and professionalism when handling escalated customer
+                                                concerns, helping retain customer trust and loyalty.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -4630,19 +4801,21 @@
                                         the Philippines' leading property developers. Amaia focuses on delivering
                                         affordable residential developments&mdash;townhouses, condominiums, and
                                         house-and-lot properties&mdash;to middle-income Filipino families nationwide.</p>
-                                    <p class="exp-responsibilities-label">Key Responsibilities</p>
-                                    <ul class="exp-list">
-                                        <li>Generated qualified leads through digital marketing, cold calling, and
-                                            property events.</li>
-                                        <li>Presented residential properties and conducted site viewings for prospective
-                                            buyers.</li>
-                                        <li>Managed reservations, documentation, credit requirements, and sales
-                                            transactions.</li>
-                                        <li>Guided clients throughout the purchasing process from inquiry to property
-                                            turnover.</li>
-                                        <li>Achieved monthly sales targets through consultative selling and relationship
-                                            management.</li>
-                                    </ul>
+                                    <div class="exp-responsibilities-box">
+                                        <p class="exp-responsibilities-label">Key Responsibilities</p>
+                                        <ul class="exp-list">
+                                            <li>Generated qualified leads through digital marketing, cold calling, and
+                                                property events.</li>
+                                            <li>Presented residential properties and conducted site viewings for prospective
+                                                buyers.</li>
+                                            <li>Managed reservations, documentation, credit requirements, and sales
+                                                transactions.</li>
+                                            <li>Guided clients throughout the purchasing process from inquiry to property
+                                                turnover.</li>
+                                            <li>Achieved monthly sales targets through consultative selling and relationship
+                                                management.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
