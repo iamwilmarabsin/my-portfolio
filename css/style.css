@@ -377,16 +377,17 @@
             border-color: var(--accent-dark);
         }
 
-        /* 2. Secondary Button (Outlined dark/charcoal) */
+        /* 2. Secondary Button (Outlined orange accent) */
         .btn-secondary {
             background: transparent;
-            color: var(--charcoal) !important;
-            border: 2px solid var(--charcoal);
+            color: var(--accent) !important;
+            border: 2px solid var(--accent);
         }
 
         .btn-secondary:hover {
             transform: translateY(-2px);
-            background: var(--charcoal);
+            background: var(--accent);
+            border-color: var(--accent);
             color: #FFFFFF !important;
         }
 
@@ -1630,13 +1631,15 @@
 
         .pricing-cta-btn.outline {
             background: transparent;
-            border: 1.5px solid var(--accent);
+            border: 2px solid var(--accent);
             color: var(--accent);
         }
 
         .pricing-cta-btn.outline:hover {
-            background: rgba(255, 92, 58, 0.04);
-            transform: translateY(-1px);
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #FFFFFF;
+            transform: translateY(-2px);
         }
 
         .pricing-cta-btn.solid {
