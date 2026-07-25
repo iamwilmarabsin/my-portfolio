@@ -14,7 +14,8 @@
     <meta name="theme-color" content="#ff5a3d" />
 
     <!-- Open Graph / Social Media Metadata -->
-    <meta property="og:title" content="Wilmar Absin | Virtual Assistant, Customer Success Specialist &amp; Remote Support Professional" />
+    <meta property="og:title"
+        content="Wilmar Absin | Virtual Assistant, Customer Success Specialist &amp; Remote Support Professional" />
     <meta property="og:description"
         content="8+ years of experience in Customer Success, Technical Support, CRM Management, Remote Operations, and Administrative Assistance for SaaS, FinTech, and B2B companies." />
     <meta property="og:type" content="website" />
@@ -516,6 +517,7 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
             .about-actions .btn-primary,
             .about-actions .btn-secondary {
                 width: 100%;
@@ -931,19 +933,9 @@
 
 
 
-        /* Ambient Glow behind portrait */
+        /* Ambient Glow behind portrait (disabled background glow) */
         .about-image-glow {
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(255, 92, 58, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            pointer-events: none;
-            filter: blur(40px);
+            display: none;
         }
 
         .about-image-frame {
@@ -1328,13 +1320,13 @@
             align-items: center;
             gap: 0.65rem;
             background: transparent;
-            color: rgba(255,255,255,0.75);
+            color: rgba(255, 255, 255, 0.75);
             font-family: var(--font-body);
             font-size: 0.95rem;
             font-weight: 700;
             padding: 0.9rem 1.75rem;
             border-radius: 10px;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
             text-decoration: none;
             letter-spacing: 0.01em;
@@ -1342,9 +1334,9 @@
         }
 
         .services-btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: #FFFFFF;
-            border-color: rgba(255,255,255,0.6);
+            border-color: rgba(255, 255, 255, 0.6);
             transform: translateY(-2px);
         }
 
@@ -1532,7 +1524,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: 1.25rem;
         }
 
         .pricing-card {
@@ -1858,13 +1850,13 @@
         .pricing-trust-bar {
             background: var(--white);
             border: 1px solid rgba(26, 26, 26, 0.08);
-            border-radius: 16px;
-            padding: 1.75rem 2rem;
-            margin-top: 3.5rem;
+            border-radius: 14px;
+            padding: 1.15rem 1.75rem;
+            margin-top: 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 1.5rem;
+            gap: 1.25rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             width: 100%;
@@ -1878,8 +1870,9 @@
         .pricing-trust-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             flex: 1;
+            min-width: 0;
         }
 
         .pricing-trust-icon {
@@ -1887,8 +1880,8 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: rgba(255, 92, 58, 0.08);
             color: var(--accent);
@@ -1896,52 +1889,50 @@
         }
 
         .pricing-trust-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             stroke: var(--accent);
         }
 
         .pricing-trust-text {
             display: flex;
             flex-direction: column;
-            gap: 0.2rem;
+            gap: 0.15rem;
             text-align: left;
+            min-width: 0;
         }
 
         .pricing-trust-heading {
             font-family: var(--font-head);
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             font-weight: 700;
             color: var(--charcoal);
-            line-height: 1.25;
+            line-height: 1.2;
+            white-space: nowrap;
         }
 
         .pricing-trust-desc {
             font-family: var(--font-body);
-            font-size: 0.8rem;
+            font-size: 0.76rem;
             font-weight: 500;
             color: var(--mid-gray);
-            line-height: 1.35;
+            line-height: 1.3;
         }
 
         .pricing-trust-divider {
-            width: 1px;
-            height: 40px;
-            background: rgba(26, 26, 26, 0.08);
-            flex-shrink: 0;
+            display: none;
         }
 
         @media (max-width: 991px) {
             .pricing-trust-bar {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 1.5rem;
-                padding: 1.5rem;
+                gap: 1rem;
+                padding: 1.25rem;
             }
 
             .pricing-trust-divider {
-                width: 100%;
-                height: 1px;
+                display: none;
             }
         }
 
@@ -2352,18 +2343,9 @@
             overflow: hidden;
         }
 
-        /* Ambient coral glow behind CTA text */
+        /* Ambient coral glow behind CTA text (disabled background glow) */
         #cta-footer::before {
-            content: "";
-            position: absolute;
-            width: 800px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(ellipse, rgba(255, 92, 58, 0.08) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
+            display: none;
         }
 
         .cta-inner {
@@ -2600,14 +2582,14 @@
             width: 100%;
             cursor: pointer;
             transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-            box-shadow: 0 4px 16px rgba(255, 92, 58, 0.22);
+            box-shadow: none;
         }
 
         .form-submit-btn:hover {
             background: var(--accent-dark);
             border-color: var(--accent-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 92, 58, 0.3);
+            box-shadow: none;
         }
 
         .contact-strip {
@@ -3211,6 +3193,8 @@
             font-size: 0.85rem;
             color: #FFFFFF;
             flex-shrink: 0;
+            object-fit: cover;
+            border: 2px solid var(--accent);
             transition: background-color 0.6s ease;
         }
 
@@ -3848,51 +3832,61 @@
                     <div class="trust-bar-logos-track">
                         <!-- Slide 1 -->
                         <div class="trust-bar-logos-slide">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/intercom.svg"
-                                alt="Intercom" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/zendesk.svg"
-                                alt="Zendesk" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/slack.svg"
-                                alt="Slack" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/google-workspace.svg"
-                                alt="Google Workspace" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/notion.svg"
-                                alt="Notion" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/asana.svg"
-                                alt="Asana" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/zoom.svg"
-                                alt="Zoom" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/hubspot.svg"
-                                alt="HubSpot" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/stripe.svg"
-                                alt="Stripe" class="trust-logo-img">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Global_Payments_Inc._logo.svg"
                                 alt="Global Payments" class="trust-logo-img">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/DoorDash_Logo.svg"
                                 alt="DoorDash" class="trust-logo-img">
+                            <svg class="trust-logo-img" viewBox="0 0 110 34" height="26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TSYS">
+                                <text x="2" y="27" font-family="'Outfit', 'Inter', sans-serif" font-weight="900"
+                                    font-size="28" fill="currentColor" letter-spacing="-1px">T</text>
+                                <line x1="22" y1="4" x2="22" y2="30" stroke="currentColor" stroke-width="2" />
+                                <text x="26" y="27" font-family="'Outfit', 'Inter', sans-serif" font-weight="900"
+                                    font-size="28" fill="currentColor" letter-spacing="-1px">SYS</text>
+                                <line x1="90" y1="4" x2="90" y2="30" stroke="currentColor" stroke-width="2" />
+                                <circle cx="97" cy="9" r="3.5" stroke="currentColor" stroke-width="0.8" />
+                                <text x="95.5" y="10.8" font-family="sans-serif" font-weight="700" font-size="4.5"
+                                    fill="currentColor">R</text>
+                            </svg>
+                            <svg class="trust-logo-img" viewBox="0 0 155 36" height="28" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simple.biz">
+                                <text x="2" y="26" font-family="'Outfit', 'Inter', sans-serif" font-weight="800"
+                                    font-size="24" fill="currentColor" letter-spacing="-0.5px">Simple</text>
+                                <circle cx="21.5" cy="8" r="3.2" fill="#ff7538" />
+                                <rect x="86" y="5" width="62" height="25" rx="8" fill="#ff7538" />
+                                <circle cx="95" cy="19.5" r="2.8" fill="#ffffff" />
+                                <text x="101" y="22.5" font-family="'Outfit', 'Inter', sans-serif" font-weight="700"
+                                    font-style="italic" font-size="16.5" fill="#ffffff">biz</text>
+                            </svg>
                         </div>
                         <!-- Slide 2 (Duplicate for Infinite Loop) -->
                         <div class="trust-bar-logos-slide" aria-hidden="true">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/intercom.svg"
-                                alt="Intercom" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/zendesk.svg"
-                                alt="Zendesk" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/slack.svg"
-                                alt="Slack" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/google-workspace.svg"
-                                alt="Google Workspace" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/notion.svg"
-                                alt="Notion" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/asana.svg"
-                                alt="Asana" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/zoom.svg"
-                                alt="Zoom" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/hubspot.svg"
-                                alt="HubSpot" class="trust-logo-img">
-                            <img src="https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/stripe.svg"
-                                alt="Stripe" class="trust-logo-img">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Global_Payments_Inc._logo.svg"
                                 alt="Global Payments" class="trust-logo-img">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/DoorDash_Logo.svg"
+                                alt="DoorDash" class="trust-logo-img">
+                            <svg class="trust-logo-img" viewBox="0 0 110 34" height="26" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TSYS">
+                                <text x="2" y="27" font-family="'Outfit', 'Inter', sans-serif" font-weight="900"
+                                    font-size="28" fill="currentColor" letter-spacing="-1px">T</text>
+                                <line x1="22" y1="4" x2="22" y2="30" stroke="currentColor" stroke-width="2" />
+                                <text x="26" y="27" font-family="'Outfit', 'Inter', sans-serif" font-weight="900"
+                                    font-size="28" fill="currentColor" letter-spacing="-1px">SYS</text>
+                                <line x1="90" y1="4" x2="90" y2="30" stroke="currentColor" stroke-width="2" />
+                                <circle cx="97" cy="9" r="3.5" stroke="currentColor" stroke-width="0.8" />
+                                <text x="95.5" y="10.8" font-family="sans-serif" font-weight="700" font-size="4.5"
+                                    fill="currentColor">R</text>
+                            </svg>
+                            <svg class="trust-logo-img" viewBox="0 0 155 36" height="28" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simple.biz">
+                                <text x="2" y="26" font-family="'Outfit', 'Inter', sans-serif" font-weight="800"
+                                    font-size="24" fill="currentColor" letter-spacing="-0.5px">Simple</text>
+                                <circle cx="21.5" cy="8" r="3.2" fill="#ff7538" />
+                                <rect x="86" y="5" width="62" height="25" rx="8" fill="#ff7538" />
+                                <circle cx="95" cy="19.5" r="2.8" fill="#ffffff" />
+                                <text x="101" y="22.5" font-family="'Outfit', 'Inter', sans-serif" font-weight="700"
+                                    font-style="italic" font-size="16.5" fill="#ffffff">biz</text>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -4267,7 +4261,7 @@
 
                     <div class="pricing-cta">
                         <a href="javascript:void(0)" class="pricing-cta-btn outline"
-                            data-hiring-trigger="Part-Time Support">
+                            data-hiring-trigger="Part-Time Support (20 hrs/week)">
                             Hire Me Part-Time
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -4420,7 +4414,7 @@
 
                     <div class="pricing-cta">
                         <a href="javascript:void(0)" class="pricing-cta-btn solid"
-                            data-hiring-trigger="Full-Time Partnership">
+                            data-hiring-trigger="Full-Time Partnership (40 hrs/week)">
                             Hire Me Full-Time
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -4455,9 +4449,12 @@
             <div class="pricing-trust-bar reveal reveal-delay-3">
                 <div class="pricing-trust-item">
                     <div class="pricing-trust-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="6"></circle>
-                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <polygon
+                                points="12 8 13.39 10.82 16.5 11.27 14.25 13.46 14.78 16.55 12 15.09 9.22 16.55 9.75 13.46 7.5 11.27 10.61 10.82 12 8">
+                            </polygon>
                         </svg>
                     </div>
                     <div class="pricing-trust-text">
@@ -4466,13 +4463,13 @@
                     </div>
                 </div>
 
-                <div class="pricing-trust-divider"></div>
-
                 <div class="pricing-trust-item">
                     <div class="pricing-trust-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            <polyline points="9 12 11 14 15 10"></polyline>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <path d="M9 15l2 2 4-4"></path>
                         </svg>
                     </div>
                     <div class="pricing-trust-text">
@@ -4481,14 +4478,14 @@
                     </div>
                 </div>
 
-                <div class="pricing-trust-divider"></div>
-
                 <div class="pricing-trust-item">
                     <div class="pricing-trust-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                            <path
+                                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                            </path>
                         </svg>
                     </div>
                     <div class="pricing-trust-text">
@@ -4497,14 +4494,14 @@
                     </div>
                 </div>
 
-                <div class="pricing-trust-divider"></div>
-
                 <div class="pricing-trust-item">
                     <div class="pricing-trust-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="19" y1="5" x2="5" y2="19"></line>
-                            <circle cx="6.5" cy="6.5" r="2.5"></circle>
-                            <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="8" r="6"></circle>
+                            <path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path>
+                            <line x1="8" y1="5" x2="8" y2="11"></line>
+                            <line x1="6" y1="8" x2="10" y2="8"></line>
                         </svg>
                     </div>
                     <div class="pricing-trust-text">
@@ -4573,12 +4570,14 @@
                                             <li>Delivered customer support via email, live chat, phone, and community
                                                 channels,
                                                 ensuring timely issue resolution and high customer satisfaction.</li>
-                                            <li>Onboarded new customers, conducted product demos, and provided training on
+                                            <li>Onboarded new customers, conducted product demos, and provided training
+                                                on
                                                 CRM
                                                 features and best practices.</li>
                                             <li>Troubleshot platform, integration, and payment terminal issues while
                                                 handling
-                                                merchant inquiries, disputes, chargebacks, and settlement investigations.
+                                                merchant inquiries, disputes, chargebacks, and settlement
+                                                investigations.
                                             </li>
                                             <li>Managed and prioritized support tickets in Jira, maintaining accurate
                                                 documentation and updating knowledge base articles.</li>
@@ -4621,7 +4620,8 @@
                                     <div class="exp-responsibilities-box">
                                         <p class="exp-responsibilities-label">Key Responsibilities</p>
                                         <ul class="exp-list">
-                                            <li>Conducted outbound prospecting and cold calling to generate qualified leads
+                                            <li>Conducted outbound prospecting and cold calling to generate qualified
+                                                leads
                                                 for
                                                 website design, development, and maintenance services.</li>
                                             <li>Scheduled discovery calls and sales appointments for the business
@@ -4629,7 +4629,8 @@
                                                 team, maintaining a consistent pipeline of qualified leads.</li>
                                             <li>Maintained prospect lists using CRM systems, ensuring accurate contact
                                                 information and activity tracking.</li>
-                                            <li>Represented the company's website design, development, and digital marketing
+                                            <li>Represented the company's website design, development, and digital
+                                                marketing
                                                 services with professionalism, building strong first impressions with
                                                 prospective clients.</li>
                                             <li>Met and exceeded daily and weekly KPIs, including outbound calls,
@@ -4677,7 +4678,8 @@
                                                 payment terminal and POS-related issues.</li>
                                             <li>Diagnosed and troubleshot payment processing, connectivity, and hardware
                                                 concerns to minimize business downtime.</li>
-                                            <li>Delivered accurate, customer-focused solutions while consistently meeting
+                                            <li>Delivered accurate, customer-focused solutions while consistently
+                                                meeting
                                                 SLAs
                                                 and quality standards.</li>
                                             <li>Documented technical issues and resolutions to contribute to internal
@@ -4726,13 +4728,16 @@
                                             <li>Assisted customers through phone, email, chat, and ticketing systems,
                                                 delivering
                                                 prompt and professional support.</li>
-                                            <li>Processed payment-related requests, account updates, card activations, and
+                                            <li>Processed payment-related requests, account updates, card activations,
+                                                and
                                                 billing inquiries with accuracy.</li>
                                             <li>Maintained detailed customer records and ensured compliance with company
                                                 procedures and service standards.</li>
-                                            <li>Handled merchant escalations related to chargebacks, disputes, and payment
+                                            <li>Handled merchant escalations related to chargebacks, disputes, and
+                                                payment
                                                 discrepancies.</li>
-                                            <li>Contributed to team performance goals by consistently achieving high CSAT
+                                            <li>Contributed to team performance goals by consistently achieving high
+                                                CSAT
                                                 and
                                                 quality scores.</li>
                                         </ul>
@@ -4772,7 +4777,8 @@
                                     <div class="exp-responsibilities-box">
                                         <p class="exp-responsibilities-label">Key Responsibilities</p>
                                         <ul class="exp-list">
-                                            <li>Assisted customers, merchants, and Dashers with order, payment, delivery,
+                                            <li>Assisted customers, merchants, and Dashers with order, payment,
+                                                delivery,
                                                 and
                                                 account-related inquiries via phone, chat, and email.</li>
                                             <li>Investigated missing, delayed, or incorrect orders and coordinated with
@@ -4783,7 +4789,8 @@
                                             <li>Troubleshot app, payment, and account access issues, guiding customers
                                                 through
                                                 effective solutions.</li>
-                                            <li>Demonstrated empathy and professionalism when handling escalated customer
+                                            <li>Demonstrated empathy and professionalism when handling escalated
+                                                customer
                                                 concerns, helping retain customer trust and loyalty.</li>
                                         </ul>
                                     </div>
@@ -4800,7 +4807,8 @@
                             <span class="exp-num">06</span>
                             <div class="exp-meta">
                                 <div class="exp-company">Property Specialist</div>
-                                <div class="exp-date">Amaia Land Corp. | Jun 2016 &ndash; Feb 2018 &middot; 1 yr 8 mos</div>
+                                <div class="exp-date">Amaia Land Corp. | Jun 2016 &ndash; Feb 2018 &middot; 1 yr 8 mos
+                                </div>
                             </div>
                             <span class="exp-chevron" aria-hidden="true">
                                 <svg viewBox="0 0 24 24">
@@ -4814,19 +4822,23 @@
                                     <p class="exp-overview">Amaia Land Corp. is a subsidiary of Ayala Land Inc., one of
                                         the Philippines' leading property developers. Amaia focuses on delivering
                                         affordable residential developments&mdash;townhouses, condominiums, and
-                                        house-and-lot properties&mdash;to middle-income Filipino families nationwide.</p>
+                                        house-and-lot properties&mdash;to middle-income Filipino families nationwide.
+                                    </p>
                                     <div class="exp-responsibilities-box">
                                         <p class="exp-responsibilities-label">Key Responsibilities</p>
                                         <ul class="exp-list">
                                             <li>Generated qualified leads through digital marketing, cold calling, and
                                                 property events.</li>
-                                            <li>Presented residential properties and conducted site viewings for prospective
+                                            <li>Presented residential properties and conducted site viewings for
+                                                prospective
                                                 buyers.</li>
                                             <li>Managed reservations, documentation, credit requirements, and sales
                                                 transactions.</li>
-                                            <li>Guided clients throughout the purchasing process from inquiry to property
+                                            <li>Guided clients throughout the purchasing process from inquiry to
+                                                property
                                                 turnover.</li>
-                                            <li>Achieved monthly sales targets through consultative selling and relationship
+                                            <li>Achieved monthly sales targets through consultative selling and
+                                                relationship
                                                 management.</li>
                                         </ul>
                                     </div>
@@ -4886,7 +4898,10 @@
                 Powered by the Right Tools
             </h2>
             <p class="tools-sub reveal reveal-delay-2">
-                Experienced with the industry-leading tools businesses rely on for customer success, technical support, operations, CRM management, and team collaboration. From help desk platforms and live chat to automation, project management, and payment systems, I leverage the right technology to deliver efficient support, streamline workflows, and create exceptional customer experiences.
+                Experienced with the industry-leading tools businesses rely on for customer success, technical support,
+                operations, CRM management, and team collaboration. From help desk platforms and live chat to
+                automation, project management, and payment systems, I leverage the right technology to deliver
+                efficient support, streamline workflows, and create exceptional customer experiences.
             </p>
 
         </div>
@@ -5312,10 +5327,10 @@
                         </p>
                         <span class="testimonial-quote-mark bottom-quote">&rdquo;</span>
                         <div class="testimonial-author-group">
-                            <div class="testimonial-author-avatar avatar-3">BG</div>
+                            <img src="ben-gill.png" alt="Ben Gill" class="testimonial-author-avatar">
                             <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Ben Gill</span>
-                                <span class="testimonial-author-title">CEO, Savvy Pet</span>
+                                <span class="testimonial-author-name">Ben G.</span>
+                                <span class="testimonial-author-title">Founder & CTO</span>
                             </div>
                         </div>
                     </div>
@@ -5331,10 +5346,10 @@
                         </p>
                         <span class="testimonial-quote-mark bottom-quote">&rdquo;</span>
                         <div class="testimonial-author-group">
-                            <div class="testimonial-author-avatar avatar-1">LK</div>
+                            <img src="louise-knoyle.png" alt="Louise Knoyle" class="testimonial-author-avatar">
                             <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Louise Knoyle</span>
-                                <span class="testimonial-author-title">Senior Accounts Manager</span>
+                                <span class="testimonial-author-name">Louise K.</span>
+                                <span class="testimonial-author-title">Accounts Manager</span>
                             </div>
                         </div>
                     </div>
@@ -5350,10 +5365,10 @@
                         </p>
                         <span class="testimonial-quote-mark bottom-quote">&rdquo;</span>
                         <div class="testimonial-author-group">
-                            <div class="testimonial-author-avatar avatar-2">HG</div>
+                            <img src="helen-gascon.png" alt="Helen Gascon" class="testimonial-author-avatar">
                             <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Helen Gascon</span>
-                                <span class="testimonial-author-title">Business Development Manager</span>
+                                <span class="testimonial-author-name">Helen G.</span>
+                                <span class="testimonial-author-title">Sales Director</span>
                             </div>
                         </div>
                     </div>
@@ -5368,10 +5383,10 @@
                         </p>
                         <span class="testimonial-quote-mark bottom-quote">&rdquo;</span>
                         <div class="testimonial-author-group">
-                            <div class="testimonial-author-avatar avatar-3">SH</div>
+                            <img src="simon-hall.jpg" alt="Simon Hall" class="testimonial-author-avatar">
                             <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Simon Hall</span>
-                                <span class="testimonial-author-title">Director of Innovation</span>
+                                <span class="testimonial-author-name">Simon H.</span>
+                                <span class="testimonial-author-title">Entrepreneur</span>
                             </div>
                         </div>
                     </div>
@@ -5386,10 +5401,10 @@
                         </p>
                         <span class="testimonial-quote-mark bottom-quote">&rdquo;</span>
                         <div class="testimonial-author-group">
-                            <div class="testimonial-author-avatar avatar-1">BG</div>
+                            <img src="ben-gill.png" alt="Ben Gill" class="testimonial-author-avatar">
                             <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Ben Gill</span>
-                                <span class="testimonial-author-title">CEO, Savvy Pet</span>
+                                <span class="testimonial-author-name">Ben G.</span>
+                                <span class="testimonial-author-title">Founder & CTO</span>
                             </div>
                         </div>
                     </div>
@@ -5405,10 +5420,10 @@
                         </p>
                         <span class="testimonial-quote-mark bottom-quote">&rdquo;</span>
                         <div class="testimonial-author-group">
-                            <div class="testimonial-author-avatar avatar-1">LK</div>
+                            <img src="louise-knoyle.png" alt="Louise Knoyle" class="testimonial-author-avatar">
                             <div class="testimonial-author-info">
-                                <span class="testimonial-author-name">Louise Knoyle</span>
-                                <span class="testimonial-author-title">Senior Accounts Manager</span>
+                                <span class="testimonial-author-name">Louise K.</span>
+                                <span class="testimonial-author-title">Accounts Manager</span>
                             </div>
                         </div>
                     </div>
@@ -5435,9 +5450,9 @@
                     <p class="cta-footer-sub reveal reveal-delay-2">
                         I get it&mdash;when you're ready to talk, you don't want to wait days for an email reply.
                         Whether you need customer support, CRM management, or administrative assistance, I'd love to
-                        learn more about your business. Send me a message, and I'll personally get back to you <strong
-                            style="color: var(--accent);">within 24 hours</strong>. No agencies, no chatbots&mdash;just
-                        direct communication, honest advice, and reliable support from start to finish.
+                        learn more about your business. Schedule a call directly below or send me a message, and I'll
+                        personally get back to you <strong style="color: var(--accent);">within 24 hours</strong>. No agencies,
+                        no chatbots&mdash;just direct communication, honest advice, and reliable support from start to finish.
                     </p>
 
                     <ul class="cta-bullets reveal reveal-delay-2">
@@ -5470,76 +5485,23 @@
                         </li>
                     </ul>
 
-                    <p class="cta-direct-text reveal reveal-delay-3">
-                        Ready to get started? Let's start the conversation.
-                    </p>
+                    <div style="margin-top: 2.2rem;" class="reveal reveal-delay-3">
+                        <a href="javascript:void(0)" class="pricing-cta-btn outline" data-hiring-trigger="Exploring Options" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1.8rem; font-size: 1rem; border-radius: 10px; font-weight: 700;">
+                            Or Send a Contact Message
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Right Column: Contact Form -->
-                <div class="cta-form-container reveal reveal-delay-3">
-                    <p class="cta-eyebrow reveal" style="margin-bottom: 1.4rem;">Let's Start the Conversation</p>
-                    <form class="contact-form" id="portfolio-contact-form"
-                        action="https://formsubmit.co/wilmarabsin.works@gmail.com" method="POST">
-                        <p class="form-intro-text">
-                            Tell me about your business and support needs. I'll get back to you within one business day
-                            to discuss how I can help.
-                        </p>
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Name" required class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <span class="input-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path
-                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                    <polyline points="22,6 12,13 2,6" />
-                                </svg>
-                            </span>
-                            <input type="email" name="email" placeholder="Company Email" required
-                                class="form-input has-icon">
-                        </div>
-                        <div class="form-group">
-                            <span class="input-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path
-                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                                </svg>
-                            </span>
-                            <input type="tel" name="phone" placeholder="Phone Number" class="form-input has-icon">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="company" placeholder="Company" required class="form-input">
-                        </div>
-
-
-                        <div class="form-group">
-                            <select name="describe-you" required class="form-input">
-                                <option value="" disabled selected hidden>What best describes you?</option>
-                                <option value="Founder / Executive">Founder / Executive</option>
-                                <option value="Operations Lead">Operations Lead</option>
-                                <option value="Customer Success Lead">Customer Success Lead</option>
-                                <option value="Product Manager">Product Manager</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select name="hear-about-us" required class="form-input">
-                                <option value="" disabled selected hidden>How did you first hear about us?</option>
-                                <option value="Google Search">Google Search</option>
-                                <option value="LinkedIn">LinkedIn</option>
-                                <option value="Twitter / X">Twitter / X</option>
-                                <option value="Referral">Referral</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" placeholder="Briefly tell me about your project or inquiry."
-                                rows="5" required class="form-input"></textarea>
-                        </div>
-                        <button type="submit" class="form-submit-btn">Submit</button>
-                    </form>
+                <!-- Right Column: Calendly Inline Widget -->
+                <div class="cta-calendly-container reveal reveal-delay-3" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; overflow: hidden;">
+                    <!-- Calendly inline widget begin -->
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/iamwilmarabsin" style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    <!-- Calendly inline widget end -->
                 </div>
 
             </div>
@@ -5927,7 +5889,7 @@
             document.body.classList.remove("modal-open");
         }
 
-        // Open modal from pricing CTA buttons
+        // Open modal from pricing CTA buttons & contact buttons
         document.querySelectorAll("[data-hiring-trigger]").forEach(btn => {
             btn.addEventListener("click", function () {
                 openModal(this.getAttribute("data-hiring-trigger"));
@@ -6009,28 +5971,21 @@
             <button type="button" class="modal-close-btn" aria-label="Close modal">&times;</button>
 
             <!-- Hiring type badge (updated dynamically) -->
-            <div class="modal-hiring-badge" id="modal-hiring-badge">Part-Time Support</div>
+            <div class="modal-hiring-badge" id="modal-hiring-badge">Full-Time Partnership (40 hrs/week)</div>
 
             <h2 id="modal-title" class="modal-head">Let's Get Started</h2>
-            <p class="modal-sub">Tell me about your business — I'll personally reply within 24 hours.</p>
+            <p class="modal-sub">Tell me about your business &mdash; I'll personally reply within 24 hours.</p>
 
             <!-- Form body (hidden on success) -->
             <div class="modal-form-body">
                 <form class="contact-form" id="modal-contact-form"
                     action="https://formsubmit.co/wilmarabsin.works@gmail.com" method="POST">
 
-                    <!-- Hiring Type field -->
+                    <!-- Name -->
                     <div class="form-group">
-                        <label for="modal-hiring-type" class="form-label">Hiring Type</label>
-                        <select name="hiring-type" id="modal-hiring-type" required class="form-input">
-                            <option value="Part-Time Support">Part-Time Support</option>
-                            <option value="Full-Time Partnership">Full-Time Partnership</option>
-                        </select>
+                        <input type="text" name="name" placeholder="Name" required class="form-input">
                     </div>
-
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Full Name" required class="form-input">
-                    </div>
+                    <!-- Email -->
                     <div class="form-group">
                         <span class="input-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -6042,6 +5997,7 @@
                         <input type="email" name="email" placeholder="Company Email" required
                             class="form-input has-icon">
                     </div>
+                    <!-- Phone -->
                     <div class="form-group">
                         <span class="input-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -6052,35 +6008,59 @@
                         </span>
                         <input type="tel" name="phone" placeholder="Phone Number" class="form-input has-icon">
                     </div>
+                    <!-- Company -->
                     <div class="form-group">
                         <input type="text" name="company" placeholder="Company" required class="form-input">
                     </div>
 
+                    <!-- Hiring Type -->
+                    <div class="form-group">
+                        <select name="hiring-type" id="modal-hiring-type" required class="form-input">
+                            <option value="" disabled selected hidden>How would you like to work together?</option>
+                            <option value="Full-Time Partnership (40 hrs/week)">Full-Time Partnership (40 hrs/week)</option>
+                            <option value="Part-Time Support (20 hrs/week)">Part-Time Support (20 hrs/week)</option>
+                            <option value="Exploring Options">Exploring Options</option>
+                        </select>
+                    </div>
+
+                    <!-- Describe You -->
                     <div class="form-group">
                         <select name="describe-you" required class="form-input">
                             <option value="" disabled selected hidden>What best describes you?</option>
-                            <option value="Founder / Executive">Founder / Executive</option>
-                            <option value="Operations Lead">Operations Lead</option>
-                            <option value="Customer Success Lead">Customer Success Lead</option>
-                            <option value="Product Manager">Product Manager</option>
+                            <option value="Founder / CEO">Founder / CEO</option>
+                            <option value="Recruitment / HR">Recruitment / HR</option>
+                            <option value="Operations Manager">Operations Manager</option>
+                            <option value="VP of Operations">VP of Operations</option>
+                            <option value="Sales Manager / VP of Sales">Sales Manager / VP of Sales</option>
+                            <option value="Executive Assistant">Executive Assistant</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>
+
+                    <!-- How Did You Hear About Me -->
                     <div class="form-group">
                         <select name="hear-about-us" required class="form-input">
-                            <option value="" disabled selected hidden>How did you first hear about us?</option>
+                            <option value="" disabled selected hidden>How did you hear about me?</option>
                             <option value="Google Search">Google Search</option>
                             <option value="LinkedIn">LinkedIn</option>
-                            <option value="Twitter / X">Twitter / X</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Threads">Threads</option>
+                            <option value="X (Twitter)">X (Twitter)</option>
+                            <option value="Word of Mouth">Word of Mouth</option>
                             <option value="Referral">Referral</option>
+                            <option value="Newsletter">Newsletter</option>
+                            <option value="Email Marketing">Email Marketing</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>
+
+                    <!-- Message -->
                     <div class="form-group">
-                        <textarea name="message" placeholder="Briefly tell me about your project or inquiry." rows="4"
-                            required class="form-input"></textarea>
+                        <textarea name="message"
+                            placeholder="Share a little about your business, your current support setup, and how I can help."
+                            rows="4" required class="form-input"></textarea>
                     </div>
-                    <button type="submit" class="form-submit-btn">Send Message</button>
+                    <button type="submit" class="form-submit-btn">Submit</button>
                 </form>
             </div>
 
