@@ -5889,11 +5889,14 @@
             document.body.classList.remove("modal-open");
         }
 
-        // Open modal from pricing CTA buttons & contact buttons
-        document.querySelectorAll("[data-hiring-trigger]").forEach(btn => {
-            btn.addEventListener("click", function () {
-                openModal(this.getAttribute("data-hiring-trigger"));
-            });
+        // Open modal from pricing CTA buttons & contact buttons (Event Delegation)
+        document.addEventListener("click", function (e) {
+            const trigger = e.target.closest("[data-hiring-trigger]");
+            if (trigger) {
+                e.preventDefault();
+                const hiringType = trigger.getAttribute("data-hiring-trigger");
+                openModal(hiringType);
+            }
         });
 
         // Close via × button
