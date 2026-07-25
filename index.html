@@ -5839,19 +5839,18 @@
             });
         }
 
-        // ── Pricing Modal ─────────────────────────────────────────────────
-        const pricingModal = document.getElementById("pricing-modal");
-        const modalContainer = pricingModal ? pricingModal.querySelector(".modal-container") : null;
-        const modalCloseBtn = pricingModal ? pricingModal.querySelector(".modal-close-btn") : null;
-        const modalForm = document.getElementById("modal-contact-form");
-        const modalHiringSelect = document.getElementById("modal-hiring-type");
-        const modalHiringBadge = pricingModal ? pricingModal.querySelector(".modal-hiring-badge") : null;
-
-        // Focusable elements for focus-trap
+        // ── Pricing & Contact Modal ───────────────────────────────────────
         const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
         function openModal(hiringType) {
+            const pricingModal = document.getElementById("pricing-modal");
             if (!pricingModal) return;
+
+            const modalContainer = pricingModal.querySelector(".modal-container");
+            const modalHiringSelect = document.getElementById("modal-hiring-type");
+            const modalHiringBadge = pricingModal.querySelector(".modal-hiring-badge");
+            const modalSuccess = pricingModal.querySelector(".modal-success");
+            const modalFormWrap = pricingModal.querySelector(".modal-form-body");
 
             // Pre-fill hiring type
             if (modalHiringSelect && hiringType) {
@@ -5864,8 +5863,6 @@
             }
 
             // Reset any previous success state
-            const modalSuccess = pricingModal.querySelector(".modal-success");
-            const modalFormWrap = pricingModal.querySelector(".modal-form-body");
             if (modalSuccess) modalSuccess.classList.remove("visible");
             if (modalFormWrap) modalFormWrap.style.display = "";
 
@@ -5883,88 +5880,92 @@
         }
 
         function closeModal() {
+            const pricingModal = document.getElementById("pricing-modal");
             if (!pricingModal) return;
             pricingModal.classList.remove("active");
             pricingModal.setAttribute("aria-hidden", "true");
             document.body.classList.remove("modal-open");
         }
 
-        // Open modal from pricing CTA buttons & contact buttons (Event Delegation)
+        // Global Event Delegation for Triggers & Close Actions
         document.addEventListener("click", function (e) {
             const trigger = e.target.closest("[data-hiring-trigger]");
             if (trigger) {
                 e.preventDefault();
                 const hiringType = trigger.getAttribute("data-hiring-trigger");
                 openModal(hiringType);
+                return;
             }
-        });
 
-        // Close via × button
-        if (modalCloseBtn) {
-            modalCloseBtn.addEventListener("click", closeModal);
-        }
+            const closeBtn = e.target.closest(".modal-close-btn, .modal-success-close");
+            if (closeBtn) {
+                e.preventDefault();
+                closeModal();
+                return;
+            }
 
-        // Close by clicking backdrop (outside modal container)
-        if (pricingModal) {
-            pricingModal.addEventListener("click", function (e) {
-                if (e.target === pricingModal) closeModal();
-            });
-        }
-
-        // Close on Esc key
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && pricingModal && pricingModal.classList.contains("active")) {
+            const pricingModal = document.getElementById("pricing-modal");
+            if (pricingModal && e.target === pricingModal) {
                 closeModal();
             }
         });
 
-        // Close via success-state "Close" button
-        const modalSuccessClose = pricingModal ? pricingModal.querySelector(".modal-success-close") : null;
-        if (modalSuccessClose) {
-            modalSuccessClose.addEventListener("click", closeModal);
-        }
+        // Close on Esc key
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                closeModal();
+            }
+        });
 
         // Focus trap inside modal
-        if (modalContainer) {
-            modalContainer.addEventListener("keydown", function (e) {
-                if (e.key !== "Tab") return;
-                const focusable = Array.from(modalContainer.querySelectorAll(FOCUSABLE));
-                if (!focusable.length) return;
-                const first = focusable[0];
-                const last = focusable[focusable.length - 1];
+        document.addEventListener("keydown", function (e) {
+            if (e.key !== "Tab") return;
+            const pricingModal = document.getElementById("pricing-modal");
+            if (!pricingModal || !pricingModal.classList.contains("active")) return;
 
-                if (e.shiftKey) {
-                    if (document.activeElement === first) {
-                        e.preventDefault();
-                        last.focus();
-                    }
-                } else {
-                    if (document.activeElement === last) {
-                        e.preventDefault();
-                        first.focus();
-                    }
+            const modalContainer = pricingModal.querySelector(".modal-container");
+            if (!modalContainer) return;
+
+            const focusable = Array.from(modalContainer.querySelectorAll(FOCUSABLE));
+            if (!focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (e.shiftKey) {
+                if (document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
                 }
-            });
-        }
+            } else {
+                if (document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        });
 
-        // Modal form submission
-        if (modalForm) {
-            modalForm.addEventListener("submit", function (e) {
-                e.preventDefault();
-                submitContactForm(
-                    modalForm,
-                    () => {
-                        // Show success state inside modal
-                        const modalFormBody = pricingModal.querySelector(".modal-form-body");
-                        const successPanel = pricingModal.querySelector(".modal-success");
-                        if (modalFormBody) modalFormBody.style.display = "none";
-                        if (successPanel) successPanel.classList.add("visible");
-                    },
-                    () => { alert("Oops! There was a problem submitting your form. Please try again."); }
-                );
-            });
-        }
+        // Modal form submission handler
+        document.addEventListener("DOMContentLoaded", function () {
+            const modalForm = document.getElementById("modal-contact-form");
+            if (modalForm) {
+                modalForm.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    const pricingModal = document.getElementById("pricing-modal");
+                    submitContactForm(
+                        modalForm,
+                        () => {
+                            const modalFormBody = pricingModal ? pricingModal.querySelector(".modal-form-body") : null;
+                            const successPanel = pricingModal ? pricingModal.querySelector(".modal-success") : null;
+                            if (modalFormBody) modalFormBody.style.display = "none";
+                            if (successPanel) successPanel.classList.add("visible");
+                        },
+                        () => { alert("Oops! There was a problem submitting your form. Please try again."); }
+                    );
+                });
+            }
+        });
     </script>
+
     <!-- ============================================================
        MODAL DIALOG (PRICING CTA POPUP)
     ============================================================ -->
